@@ -14,16 +14,18 @@ export class withdraw extends transaction {
   }
 
   withdraw() {
-    accountBalance = account.accountBalance;
-    accountBalance = accountBalance - amount;
-    let accountHistory = account;
+    let account = this.account;
+    account.deleteFromBalance(this.amount);
+    console.log("\nTransaction completed!");
+    let accountHistory = this.account.accountHistory;
     accountHistory.push(this);
+    console.log("Added to Account History!");
   }
 
   printTransactionInfo() {
     console.log("Transaction for Account Number " + this.account.accountNumber);
     console.log("Date Processed: " + Functions.getDateToday());
-    console.log("Amount withdrawn: " + amount);
+    console.log("Amount withdrawn: " + this.amount);
     console.log("TransactionID: " + this.transactionID);
   }
 }
@@ -37,8 +39,10 @@ export class deposit extends transaction {
   deposit() {
     let account = this.account;
     account.addToBalance(this.amount);
+    console.log("\nTransaction completed!");
     let accountHistory = this.account.accountHistory;
     accountHistory.push(this);
+    console.log("Added to Account History!");
   }
 
   printTransactionInfo() {
