@@ -1,7 +1,6 @@
-import { accountFactory as AccountFactory } from "./account.js";
 import { functions as Functions } from "./functions.js";
 
-class member {
+export class member {
   constructor(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
