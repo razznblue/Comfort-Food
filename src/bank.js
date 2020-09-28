@@ -12,6 +12,18 @@ export class bank {
   addAccount(account) {
     this.accounts.push(account);
   }
+  printMembers() {
+    console.log("Current Members: ");
+    for (const member of this.members) {
+      console.log(member.firstName + " " + member.lastName);
+    }
+  }
+  printAccounts() {
+    console.log("All Accounts: ");
+    for (const account of this.accounts) {
+      console.log(account.accountNumber + " : " + account.accountUser);
+    }
+  }
 
   getMember(memberFirstName, memberLastName) {
     const members = this.members;
