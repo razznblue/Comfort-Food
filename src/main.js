@@ -8,8 +8,9 @@ const main = {
   init() {
     const myBank = new bank("Nuson", "0010F");
 
-    const michelle = MemberFactory.createMember("Michelle", "Marlin");
+    const michelle = new member("Michelle", "Marlin");
     AccountFactory.createAccount(michelle, "savings");
+    AccountFactory.createAccount(michelle, "checking");
     michelle.printInfo();
   },
 };

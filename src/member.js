@@ -13,6 +13,7 @@ export class member {
     console.log("Name: " + this.firstName + " " + this.lastName);
     console.log("MemberID: " + this.getMemberID());
     const allAccounts = this.getAccounts();
+    console.log("Accounts: (" + allAccounts.length + ")");
     for (let i = 0; i < allAccounts.length; i++) {
       console.log("Account Name: " + allAccounts[i].accountName);
     }
