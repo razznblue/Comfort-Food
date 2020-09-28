@@ -7,7 +7,7 @@ export class account {
         this.accountUser = accountUser;
         this.accountType = accountType
         this.accountBalance = 0;
-        this.accountHistory = "empty";
+        this.accountHistory = [];
         this.accountName = this.returnAccountName();
     }
 
