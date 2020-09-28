@@ -13,7 +13,7 @@ const main = {
     const account1 = AccountFactory.createAccount(michelle, "savings");
     const account2 = AccountFactory.createAccount(michelle, "checking");
 
-    michelle.printInfo();
+    //michelle.printInfo();
 
     myBank.addMember(michelle);
     myBank.addAccount(account1);
@@ -21,13 +21,13 @@ const main = {
     //myBank.printMembers();
     //myBank.printAccounts();
 
-    const trans = new deposit(account1, "08e3", 500);
+    const trans = new deposit(account1, 500);
     trans.deposit();
 
     account1.printAccountInfo();
     trans.printTransactionInfo();
 
-    const withd = new withdraw(account1, "08f1", 50.74);
+    const withd = new withdraw(account1, 50.74);
     withd.withdraw();
 
     account1.printAccountInfo();

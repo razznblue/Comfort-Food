@@ -1,15 +1,15 @@
 import { functions as Functions } from "./functions.js";
 
 export class transaction {
-  constructor(account, transactionID) {
+  constructor(account) {
     this.account = account;
-    this.transactionID = transactionID;
+    this.transactionID = Functions.calculateTransactionID();
   }
 }
 
 export class withdraw extends transaction {
-  constructor(account, transactionID, amount) {
-    super(account, transactionID);
+  constructor(account, amount) {
+    super(account);
     this.amount = amount;
   }
 
@@ -31,8 +31,8 @@ export class withdraw extends transaction {
 }
 
 export class deposit extends transaction {
-  constructor(account, transactionID, amount) {
-    super(account, transactionID);
+  constructor(account, amount) {
+    super(account);
     this.amount = amount;
   }
 

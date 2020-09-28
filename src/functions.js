@@ -1,5 +1,5 @@
 const numbers = "0123456789";
-//const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP";
+const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP";
 const characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOP";
 
 export const functions = {
@@ -30,6 +30,25 @@ export const functions = {
         Math.floor(Math.random() * characters.length)
       );
       id += selectedCharacter;
+    }
+    return id;
+  },
+
+  calculateTransactionID() {
+    let id = "";
+    id += letters.charAt(Math.floor(Math.random() * letters.length));
+    id += "-";
+    for (let i = 0; i < 4; i++) {
+      let selectedNumber = numbers.charAt(
+        Math.floor(Math.random() * numbers.length)
+      );
+      id += selectedNumber;
+    }
+    for (let i = 0; i < 4; i++) {
+      let selectedNumber = characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+      id += selectedNumber;
     }
     return id;
   },
