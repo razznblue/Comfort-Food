@@ -20,6 +20,15 @@ export class account {
     console.log("Account Balance: " + this.accountBalance);
     console.log("Account History: " + this.accountHistory);
   }
+  printAccountHistory() {
+    accountHistory = this.accountHistory;
+  }
+  addToBalance(amount) {
+    this.accountBalance += amount;
+  }
+  deleteFromBalance(amount) {
+    this.accountBalance -= amount;
+  }
 
   returnAccountName() {
     let firstName = this.accountUser.split(" ")[0];

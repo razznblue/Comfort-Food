@@ -7,7 +7,7 @@ export class transaction {
   }
 }
 
-class withdraw extends transaction {
+export class withdraw extends transaction {
   constructor(account, transactionID, amount) {
     super(account, transactionID);
     this.amount = amount;
@@ -28,23 +28,23 @@ class withdraw extends transaction {
   }
 }
 
-class deposit extends transaction {
+export class deposit extends transaction {
   constructor(account, transactionID, amount) {
     super(account, transactionID);
     this.amount = amount;
   }
 
   deposit() {
-    accountBalance = account.accountBalance;
-    accountBalance = accountBalance + amount;
-    let accountHistory = account;
+    let account = this.account;
+    account.addToBalance(this.amount);
+    let accountHistory = this.account.accountHistory;
     accountHistory.push(this);
   }
 
   printTransactionInfo() {
     console.log("Transaction for Account Number " + this.account.accountNumber);
     console.log("Date Processed: " + Functions.getDateToday());
-    console.log("Amount Deposited: " + amount);
+    console.log("Amount Deposited: " + this.amount);
     console.log("TransactionID: " + this.transactionID);
   }
 }

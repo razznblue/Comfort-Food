@@ -37,7 +37,7 @@ export const functions = {
   getDateToday() {
     var currentdate = new Date();
     //prettier-ignore
-    var dateTime = "Last Sync: " + currentdate.getDate() + "/"
+    var dateTime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  
