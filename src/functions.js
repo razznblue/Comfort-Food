@@ -53,15 +53,21 @@ export const functions = {
     return id;
   },
 
-  getDateToday() {
+  getDate() {
     var currentdate = new Date();
     //prettier-ignore
-    var dateTime = currentdate.getDate() + "/"
+    var date = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-    return dateTime;
+                + currentdate.getFullYear();
+    return date;
+  },
+
+  getTime() {
+    var currentTime = new Date();
+    //prettier-ignore
+    var time = currentTime.getHours() + ":"
+            + currentTime.getMinutes() + ":"
+            + currentTime.getSeconds();
+    return time;
   },
 };

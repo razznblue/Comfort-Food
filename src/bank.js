@@ -1,3 +1,5 @@
+import { functions as Functions } from "./functions.js";
+
 export class bank {
   constructor(bankName, bankID) {
     this.bankName = bankName;
@@ -7,6 +9,7 @@ export class bank {
   }
 
   addMember(member) {
+    member.joinDate = Functions.getDate();
     this.members.push(member);
   }
   addAccount(account) {
@@ -20,8 +23,11 @@ export class bank {
   }
   printAccounts() {
     console.log("All Accounts: ");
+    //prettier-ignore
     for (const account of this.accounts) {
-      console.log(account.accountNumber + " : " + account.accountUser);
+      console.log(account.accountNumber + " : " + 
+                  account.accountType +  " : " + 
+                  account.accountUser);
     }
   }
 

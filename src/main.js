@@ -7,7 +7,7 @@ import { transaction, withdraw, deposit } from "./transaction.js";
 
 const main = {
   init() {
-    const myBank = new bank("Nuson", "0010F");
+    const myBank = new bank("Nuson-Bank", "0010F");
 
     const michelle = new member("Michelle", "Marlin");
     const account1 = AccountFactory.createAccount(michelle, "savings");
@@ -20,6 +20,10 @@ const main = {
     myBank.addAccount(account2);
     //myBank.printMembers();
     //myBank.printAccounts();
+
+    console.log("Bank Information: " + myBank.bankName);
+    myBank.printAccounts();
+    myBank.printMembers();
 
     const trans = new deposit(account1, 500);
     trans.deposit();
