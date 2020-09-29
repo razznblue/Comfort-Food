@@ -26,6 +26,8 @@ const main = {
 
     account1.deposit(300);
 
+    account1.showLastTrans();
+
     account1.printAccountInfo();
     //trans.printTransactionInfo();
 
@@ -33,6 +35,8 @@ const main = {
 
     account1.printAccountInfo();
     //withd.printTransactionInfo();
+
+    account1.showLastTrans();
   },
 };
 

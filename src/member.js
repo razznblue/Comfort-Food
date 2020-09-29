@@ -36,10 +36,11 @@ export class member {
   }
 
   addAccount(account) {
-    if (this.accounts) {
+    const accounts = this.accounts;
+    if (accounts) {
       this.accounts.push(account);
     } else {
-      let memberAccounts = (this.accounts = []);
+      let memberAccounts = [];
       memberAccounts.push(account);
     }
     console.log("Account added successfuly!");

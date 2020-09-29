@@ -35,7 +35,7 @@ export class account {
     let firstName = this.accountUser.split(" ")[0];
     return firstName + "-account-" + this.accountType;
   }
-  makeAccountName(firstName) {
+  setAccountName(firstName) {
     return firstName + "-account-" + this.accountType;
   }
 
@@ -47,13 +47,19 @@ export class account {
     const depoSit = new deposit(this, amount);
     depoSit.deposit();
   }
+
+  showLastTrans() {
+    const transactions = this.accountHistory;
+    const transaction = transactions[transactions.length - 1];
+    transaction.printTransactionInfo();
+  }
 }
 
 export const accountFactory = {
   createAccount(member, type) {
     let memberName = member.firstName + " " + member.lastName;
     const newAccount = new account(memberName, type);
-    newAccount.accountName = newAccount.makeAccountName(member.firstName);
+    newAccount.accountName = newAccount.setAccountName(member.firstName);
     newAccount.accountNumber = Functions.calculateAccountNumber();
     member.accounts.push(newAccount);
     return newAccount;
