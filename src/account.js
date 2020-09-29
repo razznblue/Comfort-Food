@@ -1,4 +1,5 @@
 import { functions as Functions } from "./functions.js";
+import { transaction, withdraw, deposit } from "./transaction.js";
 
 export class account {
   //prettier-ignore
@@ -36,6 +37,15 @@ export class account {
   }
   makeAccountName(firstName) {
     return firstName + "-account-" + this.accountType;
+  }
+
+  withdraw(amount) {
+    const withDraw = new withdraw(this, amount);
+    withDraw.withdraw();
+  }
+  deposit(amount) {
+    const depoSit = new deposit(this, amount);
+    depoSit.deposit();
   }
 }
 

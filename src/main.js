@@ -3,7 +3,6 @@ import { account } from "./account.js";
 import { bank } from "./bank.js";
 import { memberFactory as MemberFactory } from "./member.js";
 import { accountFactory as AccountFactory } from "./account.js";
-import { transaction, withdraw, deposit } from "./transaction.js";
 
 const main = {
   init() {
@@ -25,17 +24,15 @@ const main = {
     myBank.printAccounts();
     myBank.printMembers();
 
-    const trans = new deposit(account1, 500);
-    trans.deposit();
+    account1.deposit(300);
 
     account1.printAccountInfo();
-    trans.printTransactionInfo();
+    //trans.printTransactionInfo();
 
-    const withd = new withdraw(account1, 50.74);
-    withd.withdraw();
+    account1.withdraw(30.5);
 
     account1.printAccountInfo();
-    withd.printTransactionInfo();
+    //withd.printTransactionInfo();
   },
 };
 
