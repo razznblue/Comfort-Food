@@ -8,6 +8,19 @@ export class member {
     this.accounts = [];
   }
 
+  // <----- ADD METHODS ----->
+  addAccount(account) {
+    const accounts = this.accounts;
+    if (accounts) {
+      this.accounts.push(account);
+    } else {
+      let memberAccounts = [];
+      memberAccounts.push(account);
+    }
+    console.log("Account added successfuly!");
+  }
+
+  // <----- PRINT METHODS ----->
   printInfo() {
     console.log("\nShowing info for member: ");
     console.log("Name: " + this.firstName + " " + this.lastName);
@@ -27,22 +40,12 @@ export class member {
     }
   }
 
+  // <----- GET METHODS ----->
   getMemberID() {
     return this.memberID;
   }
 
   getAccounts() {
     return this.accounts;
-  }
-
-  addAccount(account) {
-    const accounts = this.accounts;
-    if (accounts) {
-      this.accounts.push(account);
-    } else {
-      let memberAccounts = [];
-      memberAccounts.push(account);
-    }
-    console.log("Account added successfuly!");
   }
 }

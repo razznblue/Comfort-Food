@@ -1,7 +1,5 @@
 import { member } from "./member.js";
-import { account } from "./account.js";
 import { bank } from "./bank.js";
-import { accountFactory as AccountFactory } from "./account.js";
 
 const main = {
   init() {
@@ -28,7 +26,7 @@ const main = {
       console.log(account);
     } */
     console.log("INFORMATION");
-    const michAccount = myBank.returnAccount(
+    const michAccount = myBank.getAccount(
       "Michelle Marlin",
       "Michelle-account-checking"
     );
@@ -42,18 +40,12 @@ const main = {
     myBank.printMembers();
 
     michAccount.deposit(300);
-
     michAccount.showLastTrans();
+    michAccount.printAccountInfo();
 
-    //account1.printAccountInfo();
-    //trans.printTransactionInfo();
-
-    //account1.withdraw(30.5);
-
-    //account1.printAccountInfo();
-    //withd.printTransactionInfo();
-
-    //account1.showLastTrans();
+    michAccount.withdraw(30.5);
+    michAccount.printAccountInfo();
+    michAccount.showLastTrans();
   },
 };
 

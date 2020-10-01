@@ -1,6 +1,5 @@
 import { functions as Functions } from "./functions.js";
 import { account } from "./account.js";
-import { member } from "./member.js";
 
 export class bank {
   constructor(bankName, bankID) {
@@ -10,6 +9,7 @@ export class bank {
     this.accounts = [];
   }
 
+  // <----- ADD METHODS ----->
   addMember(member) {
     let memberName = member.firstName + " " + member.lastName;
     member.joinDate = Functions.getDate();
@@ -27,14 +27,24 @@ export class bank {
     console.log("Account created Successfully!");
     console.log("Your account Number is: " + newAccount.accountNumber);
   }
+
+  // <----- GET METHODS ----->
+  getMember(memberFirstName, memberLastName) {
+    const members = this.members;
+    for (const member of members) {
+      //prettier-ignore
+      if (member.firstName == memberFirstName && member.lastName == memberLastName) {
+              return member;
+      }
+    }
+  }
   getAccounts(memberName) {
     const member = this.members.find(
       (member) => member.firstName + " " + member.lastName === memberName
     );
     return member.accounts;
   }
-
-  returnAccount(memberName, accountName) {
+  getAccount(memberName, accountName) {
     const memberAccounts = this.getAccounts(memberName);
     for (var account of memberAccounts) {
       if (account.accountName == accountName) {
@@ -46,6 +56,7 @@ export class bank {
     }
   }
 
+  // <----- PRINT METHODS ----->
   printMembers() {
     console.log("Current Members: ");
     for (const member of this.members) {
@@ -59,16 +70,6 @@ export class bank {
       console.log(account.accountNumber + " : " + 
                   account.accountType +  " : " + 
                   account.accountUser);
-    }
-  }
-
-  getMember(memberFirstName, memberLastName) {
-    const members = this.members;
-    for (const member of members) {
-      //prettier-ignore
-      if (member.firstName == memberFirstName && member.lastName == memberLastName) {
-              return member;
-      }
     }
   }
 }

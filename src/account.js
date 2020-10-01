@@ -12,6 +12,12 @@ export class account {
         this.accountName = this.returnAccountName();
     }
 
+  // <----- ADD METHODS ----->
+  addToBalance(amount) {
+    this.accountBalance += amount;
+  }
+
+  // <----- PRINT METHODS ----->
   printAccountInfo() {
     console.log("\nShowing Account Info For: ");
     console.log("Account Name: " + this.accountName);
@@ -23,9 +29,6 @@ export class account {
   }
   printAccountHistory() {
     accountHistory = this.accountHistory;
-  }
-  addToBalance(amount) {
-    this.accountBalance += amount;
   }
   deleteFromBalance(amount) {
     this.accountBalance -= amount;
@@ -54,14 +57,3 @@ export class account {
     transaction.printTransactionInfo();
   }
 }
-
-export const accountFactory = {
-  createAccount(member, type) {
-    let memberName = member.firstName + " " + member.lastName;
-    const newAccount = new account(memberName, type);
-    newAccount.accountName = newAccount.setAccountName(member.firstName);
-    newAccount.accountNumber = Functions.calculateAccountNumber();
-    member.accounts.push(newAccount);
-    return newAccount;
-  },
-};
