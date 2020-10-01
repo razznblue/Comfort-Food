@@ -46,17 +46,3 @@ export class member {
     console.log("Account added successfuly!");
   }
 }
-
-export const memberFactory = {
-    createMember(firstName, lastName) {
-        const newMember = new member(firstName, lastName);
-        return newMember;
-    }
-};
-
-//prettier-ignore
-/* const michelle = new member("Michelle", "Marlin");
-const newAccount = AccountFactory.createAccount(michelle, "checking");
-michelle.addAccount(newAccount);
-michelle.printInfo();
-michelle.printAccountInfo(); */

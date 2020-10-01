@@ -17,6 +17,7 @@ export class withdraw extends transaction {
     let account = this.account;
     account.deleteFromBalance(this.amount);
     console.log("\nTransaction completed!");
+    console.log("Withdrew $" + this.amount);
     this.dateExecuted = Functions.getDate();
     this.timeExecuted = Functions.getTime();
     let accountHistory = this.account.accountHistory;
@@ -46,6 +47,7 @@ export class deposit extends transaction {
     let account = this.account;
     account.addToBalance(this.amount);
     console.log("\nTransaction completed!");
+    console.log("Deposited $" + this.amount);
     this.dateExecuted = Functions.getDate();
     this.timeExecuted = Functions.getTime();
     let accountHistory = this.account.accountHistory;

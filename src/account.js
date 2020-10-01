@@ -1,5 +1,5 @@
 import { functions as Functions } from "./functions.js";
-import { transaction, withdraw, deposit } from "./transaction.js";
+import { withdraw, deposit } from "./transaction.js";
 
 export class account {
   //prettier-ignore

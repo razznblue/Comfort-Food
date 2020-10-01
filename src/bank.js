@@ -1,4 +1,6 @@
 import { functions as Functions } from "./functions.js";
+import { account } from "./account.js";
+import { member } from "./member.js";
 
 export class bank {
   constructor(bankName, bankID) {
@@ -9,12 +11,41 @@ export class bank {
   }
 
   addMember(member) {
+    let memberName = member.firstName + " " + member.lastName;
     member.joinDate = Functions.getDate();
     this.members.push(member);
+    console.log("Added user " + memberName + " to " + this.bankName);
   }
-  addAccount(account) {
-    this.accounts.push(account);
+  addAccount(accountType, member) {
+    const accounts = this.accounts;
+    let memberName = member.firstName + " " + member.lastName;
+    const newAccount = new account(memberName, accountType);
+    newAccount.accountName = newAccount.setAccountName(member.firstName);
+    newAccount.accountNumber = Functions.calculateAccountNumber();
+    accounts.push(newAccount);
+    member.accounts.push(newAccount);
+    console.log("Account created Successfully!");
+    console.log("Your account Number is: " + newAccount.accountNumber);
   }
+  getAccounts(memberName) {
+    const member = this.members.find(
+      (member) => member.firstName + " " + member.lastName === memberName
+    );
+    return member.accounts;
+  }
+
+  returnAccount(memberName, accountName) {
+    const memberAccounts = this.getAccounts(memberName);
+    for (var account of memberAccounts) {
+      if (account.accountName == accountName) {
+        console.log(
+          "account located! Now returning your account information..."
+        );
+        return account;
+      }
+    }
+  }
+
   printMembers() {
     console.log("Current Members: ");
     for (const member of this.members) {
@@ -37,16 +68,6 @@ export class bank {
       //prettier-ignore
       if (member.firstName == memberFirstName && member.lastName == memberLastName) {
               return member;
-      }
-    }
-  }
-
-  getAccount(accountNumber) {
-    const accounts = this.accounts;
-    for (const account of accounts) {
-      //prettier-ignore
-      if (account.accountNumber == accountNumber) {
-              return account;
       }
     }
   }

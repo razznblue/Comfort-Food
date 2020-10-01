@@ -1,7 +1,6 @@
 import { member } from "./member.js";
 import { account } from "./account.js";
 import { bank } from "./bank.js";
-import { memberFactory as MemberFactory } from "./member.js";
 import { accountFactory as AccountFactory } from "./account.js";
 
 const main = {
@@ -9,34 +8,52 @@ const main = {
     const myBank = new bank("Nuson-Bank", "0010F");
 
     const michelle = new member("Michelle", "Marlin");
-    const account1 = AccountFactory.createAccount(michelle, "savings");
-    const account2 = AccountFactory.createAccount(michelle, "checking");
+    //const account1 = AccountFactory.createAccount(michelle, "savings");
+    //const account2 = AccountFactory.createAccount(michelle, "checking");
 
     //michelle.printInfo();
 
     myBank.addMember(michelle);
-    myBank.addAccount(account1);
-    myBank.addAccount(account2);
-    //myBank.printMembers();
-    //myBank.printAccounts();
+    myBank.addAccount("checking", michelle);
+    myBank.addAccount("savings", michelle);
 
-    console.log("Bank Information: " + myBank.bankName);
     myBank.printAccounts();
     myBank.printMembers();
 
-    account1.deposit(300);
+    for (const account of myBank.accounts) {
+      console.log(account);
+    }
+    /* const michAccounts = myBank.getAccounts("Michelle Marlin");
+    for (var account of michAccounts) {
+      console.log(account);
+    } */
+    console.log("INFORMATION");
+    const michAccount = myBank.returnAccount(
+      "Michelle Marlin",
+      "Michelle-account-checking"
+    );
+    console.log(michAccount);
 
-    account1.showLastTrans();
+    //myBank.printMembers();
+    //myBank.printAccounts();
 
-    account1.printAccountInfo();
+    console.log("\nBank Information: " + myBank.bankName);
+    myBank.printAccounts();
+    myBank.printMembers();
+
+    michAccount.deposit(300);
+
+    michAccount.showLastTrans();
+
+    //account1.printAccountInfo();
     //trans.printTransactionInfo();
 
-    account1.withdraw(30.5);
+    //account1.withdraw(30.5);
 
-    account1.printAccountInfo();
+    //account1.printAccountInfo();
     //withd.printTransactionInfo();
 
-    account1.showLastTrans();
+    //account1.showLastTrans();
   },
 };
 
