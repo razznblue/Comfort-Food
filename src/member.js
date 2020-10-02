@@ -48,4 +48,12 @@ export class member {
   getAccounts() {
     return this.accounts;
   }
+  getAccountBalance(accountName) {
+    const accounts = this.accounts;
+    for (const account of accounts) {
+      if ((account.accountName = accountName)) {
+        return account.accountBalance;
+      }
+    }
+  }
 }

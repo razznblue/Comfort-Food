@@ -25,27 +25,30 @@ const main = {
     for (var account of michAccounts) {
       console.log(account);
     } */
+
     console.log("INFORMATION");
     const michAccount = myBank.getAccount(
       "Michelle Marlin",
       "Michelle-account-checking"
     );
-    console.log(michAccount);
 
     //myBank.printMembers();
     //myBank.printAccounts();
 
-    console.log("\nBank Information: " + myBank.bankName);
-    myBank.printAccounts();
-    myBank.printMembers();
+    //console.log("\nBank Information: " + myBank.bankName);
+    //myBank.printAccounts();
+    //myBank.printMembers();
 
     michAccount.deposit(300);
-    michAccount.showLastTrans();
-    michAccount.printAccountInfo();
+    //michAccount.showLastTrans();
+    //michAccount.printAccountInfo();
 
-    michAccount.withdraw(30.5);
-    michAccount.printAccountInfo();
-    michAccount.showLastTrans();
+    const balance = michelle.getAccountBalance("Michelle-account-checking");
+    console.log(balance);
+
+    //michAccount.withdraw(30.5);
+    //michAccount.printAccountInfo();
+    //michAccount.showLastTrans();
   },
 };
 

@@ -38,6 +38,9 @@ export class account {
     let firstName = this.accountUser.split(" ")[0];
     return firstName + "-account-" + this.accountType;
   }
+  returnBalance() {
+    return this.accountBalance;
+  }
   setAccountName(firstName) {
     return firstName + "-account-" + this.accountType;
   }
