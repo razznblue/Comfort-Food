@@ -1,7 +1,7 @@
 import { functions as Functions } from "./functions.js";
-import { withdraw, deposit, Transfer } from "./transaction.js";
+import { Withdraw, Deposit, Transfer } from "./transaction.js";
 
-export class account {
+export class Account {
   //prettier-ignore
   constructor(accountUser, accountType){
         this.accountNumber = Functions.calculateAccountNumber();
@@ -49,11 +49,11 @@ export class account {
   }
 
   withdraw(amount) {
-    const withDraw = new withdraw(this, amount);
+    const withDraw = new Withdraw(this, amount);
     withDraw.withdraw();
   }
   deposit(amount) {
-    const depoSit = new deposit(this, amount);
+    const depoSit = new Deposit(this, amount);
     depoSit.deposit();
   }
   transfer(targetedAccount, amount) {

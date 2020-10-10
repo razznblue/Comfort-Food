@@ -1,7 +1,7 @@
 import { functions as Functions } from "./functions.js";
-import { account } from "./account.js";
+import { Account } from "./account.js";
 
-export class bank {
+export class Bank {
   constructor(bankName, bankID) {
     this.bankName = bankName;
     this.bankID = bankID;
@@ -19,7 +19,7 @@ export class bank {
   addAccount(accountType, member) {
     const accounts = this.accounts;
     let memberName = member.firstName + " " + member.lastName;
-    const newAccount = new account(memberName, accountType);
+    const newAccount = new Account(memberName, accountType);
     newAccount.accountName = newAccount.setAccountName(member.firstName);
     newAccount.accountNumber = Functions.calculateAccountNumber();
     accounts.push(newAccount);

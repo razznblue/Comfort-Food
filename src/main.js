@@ -1,11 +1,11 @@
-import { member } from "./member.js";
-import { bank } from "./bank.js";
+import { Member } from "./member.js";
+import { Bank } from "./bank.js";
 
 const main = {
   init() {
-    const myBank = new bank("Nuson-Bank", "0010F");
+    const myBank = new Bank("Nuson-Bank", "0010F");
 
-    const michelle = new member("Michelle", "Marlin");
+    const michelle = new Member("Michelle", "Marlin");
     //const account1 = AccountFactory.createAccount(michelle, "savings");
     //const account2 = AccountFactory.createAccount(michelle, "checking");
 

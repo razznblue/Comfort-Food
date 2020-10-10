@@ -1,13 +1,21 @@
 import { functions as Functions } from "./functions.js";
 
-export class transaction {
+export class Transaction {
   constructor(account) {
     this.account = account;
     this.transactionID = Functions.calculateTransactionID();
   }
+
+  addToAccountHistory() {
+    this.dateExecuted = Functions.getDate();
+    this.timeExecuted = Functions.getTime();
+    let accountHistory = this.account.accountHistory;
+    accountHistory.push(this);
+    console.log("Added to Account History!");
+  }
 }
 
-export class withdraw extends transaction {
+export class Withdraw extends Transaction {
   constructor(account, amount) {
     super(account);
     this.amount = amount;
@@ -18,11 +26,7 @@ export class withdraw extends transaction {
     account.deleteFromBalance(this.amount);
     console.log("\nTransaction completed!");
     console.log("Withdrew $" + this.amount);
-    this.dateExecuted = Functions.getDate();
-    this.timeExecuted = Functions.getTime();
-    let accountHistory = this.account.accountHistory;
-    accountHistory.push(this);
-    console.log("Added to Account History!");
+    this.addToAccountHistory();
   }
 
   printTransactionInfo() {
@@ -37,7 +41,7 @@ export class withdraw extends transaction {
   }
 }
 
-export class deposit extends transaction {
+export class Deposit extends Transaction {
   constructor(account, amount) {
     super(account);
     this.amount = amount;
@@ -48,11 +52,7 @@ export class deposit extends transaction {
     account.addToBalance(this.amount);
     console.log("\nTransaction completed!");
     console.log("Deposited $" + this.amount);
-    this.dateExecuted = Functions.getDate();
-    this.timeExecuted = Functions.getTime();
-    let accountHistory = this.account.accountHistory;
-    accountHistory.push(this);
-    console.log("Added to Account History!");
+    this.addToAccountHistory();
   }
 
   printTransactionInfo() {
@@ -67,7 +67,7 @@ export class deposit extends transaction {
   }
 }
 
-export class Transfer extends transaction {
+export class Transfer extends Transaction {
   constructor(account, toAccount, amount) {
     super(account, amount);
     this.amount = amount;

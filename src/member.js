@@ -1,6 +1,6 @@
 import { functions as Functions } from "./functions.js";
 
-export class member {
+export class Member {
   constructor(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
