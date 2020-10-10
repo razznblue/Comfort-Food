@@ -21,30 +21,28 @@ const main = {
     for (const account of myBank.accounts) {
       console.log(account);
     }
-    /* const michAccounts = myBank.getAccounts("Michelle Marlin");
-    for (var account of michAccounts) {
-      console.log(account);
-    } */
 
     console.log("INFORMATION");
-    const michAccount = myBank.getAccount(
+    const checkingAc = myBank.getAccount(
       "Michelle Marlin",
       "Michelle-account-checking"
     );
+    const savingsAc = myBank.getAccount(
+      "Michelle Marlin",
+      "Michelle-account-savings"
+    );
 
-    //myBank.printMembers();
-    //myBank.printAccounts();
+    checkingAc.deposit(300);
+    savingsAc.deposit(300);
 
-    //console.log("\nBank Information: " + myBank.bankName);
-    //myBank.printAccounts();
-    //myBank.printMembers();
-
-    michAccount.deposit(300);
     //michAccount.showLastTrans();
     //michAccount.printAccountInfo();
 
-    const balance = michelle.getAccountBalance("Michelle-account-checking");
-    console.log(balance);
+    checkingAc.transfer(savingsAc, 120);
+
+    for (const account of myBank.accounts) {
+      console.log(account);
+    }
 
     //michAccount.withdraw(30.5);
     //michAccount.printAccountInfo();

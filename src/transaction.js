@@ -66,3 +66,29 @@ export class deposit extends transaction {
     console.log("Amount Deposited: " + this.amount);
   }
 }
+
+export class Transfer extends transaction {
+  constructor(account, toAccount, amount) {
+    super(account, amount);
+    this.amount = amount;
+    this.toAccount = toAccount;
+  }
+
+  transfer() {
+    let account = this.account;
+    let toAccount = this.toAccount;
+    let amount = this.amount;
+    let accountHistory = account.accountHistory;
+    let toAccountHistory = toAccount.accountHistory;
+    this.dateExecuted = Functions.getDate();
+    this.timeExecuted = Functions.getTime();
+    account.removeFromBalance(amount);
+    toAccount.addToBalance(amount);
+    console.log("Transfer " + this.transactionID + " complete.");
+    console.log("Removed " + amount + " from account " + account.accountNumber);
+    console.log("Added " + amount + " to account " + toAccount.accountNumber);
+    accountHistory.push(this);
+    toAccountHistory.push(this);
+    console.log("Added to Both Accounts Historyʻs!");
+  }
+}

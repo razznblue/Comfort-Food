@@ -1,5 +1,5 @@
 import { functions as Functions } from "./functions.js";
-import { withdraw, deposit } from "./transaction.js";
+import { withdraw, deposit, Transfer } from "./transaction.js";
 
 export class account {
   //prettier-ignore
@@ -12,9 +12,12 @@ export class account {
         this.accountName = this.returnAccountName();
     }
 
-  // <----- ADD METHODS ----->
+  // <----- ADD + REMOVE METHODS ----->
   addToBalance(amount) {
     this.accountBalance += amount;
+  }
+  removeFromBalance(amount) {
+    this.accountBalance -= amount;
   }
 
   // <----- PRINT METHODS ----->
@@ -52,6 +55,10 @@ export class account {
   deposit(amount) {
     const depoSit = new deposit(this, amount);
     depoSit.deposit();
+  }
+  transfer(targetedAccount, amount) {
+    const transfer = new Transfer(this, targetedAccount, amount);
+    transfer.transfer();
   }
 
   showLastTrans() {
