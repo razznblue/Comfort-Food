@@ -9,7 +9,7 @@ const variables = {
 }
 
 // Implement ejs tamplate engine to render html file from views folder
-app.set("views", path.join(__dirname, "public/views"));
+app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
 // Tell our app to look in the styles folder for styling
