@@ -1,4 +1,4 @@
-import { functions as Functions } from "./functions.js";
+import { functions as Functions } from "../functions.js";
 
 export class Member {
   constructor(firstName, lastName) {

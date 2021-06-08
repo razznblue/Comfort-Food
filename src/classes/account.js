@@ -1,4 +1,4 @@
-import { functions as Functions } from "./functions.js";
+import { functions as Functions } from "../functions.js";
 import { Withdraw, Deposit, Transfer } from "./transaction.js";
 
 export class Account {

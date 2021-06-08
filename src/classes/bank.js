@@ -1,4 +1,4 @@
-import { functions as Functions } from "./functions.js";
+import { functions as Functions } from "../functions.js";
 import { Account } from "./account.js";
 
 export class Bank {
