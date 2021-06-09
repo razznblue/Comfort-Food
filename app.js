@@ -5,7 +5,8 @@ const app = express();
 const port = 3005;
 
 const variables = {
-    username: "driloves"
+    username: "driloves",
+    accounts: ""
 }
 
 // Implement ejs tamplate engine to render html file from views folder
