@@ -36,6 +36,15 @@ nav, .nav-links {
         &:hover {
             color: $text-hover-color;
             font-size: 1.2rem;
+        } 
+        a {
+            color: $text-color;
         }
     }
+}
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 1.2rem;
+    color: $background-color !important;
 }

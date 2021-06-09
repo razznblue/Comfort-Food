@@ -6,6 +6,9 @@
 main {
   background: #ceb3db; }
 
+a {
+  text-decoration: none; }
+
 .header {
   height: 10vh;
   min-height: 3.8rem;
@@ -53,6 +56,15 @@ nav, .nav-links {
 .nav-links li:hover {
   color: #eeeeee;
   font-size: 1.2rem; }
+
+.nav-links li a {
+  color: #cecece; }
+
+.active {
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 1.2rem;
+  color: #ceb3db !important; }
 
 main {
   height: 90vh;

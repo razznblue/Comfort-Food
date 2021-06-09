@@ -3,14 +3,14 @@
         <nav>
             <ul class="nav-links links1">
                 <li class="logo-container"><img id="logo" src="img/logo2.png" alt=""></li>
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
-                <li><%- accounts %></li>
+                <li><a <% if ( pageName === "index" ) { %> class="active" <% } %> href="../">Home</a></li>
+                <li><a <% if ( pageName === "about" ) { %> class="active" <% } %> href="../about">About</a></li>
+                <li><a <% if ( pageName === "contact" ) { %> class="active" <% } %> href="../contact">Contact</a></li>
+                <li class="nav-item"><%- %></li>
             </ul>
             <ul class="nav-links links2">
-                <li>Sign Up</li>
-                <li>Log In</li>
+                <li><a href="#signup">Sign Up</a></li>
+                <li><a href="#login">Login</a></li>
             </ul>
         </nav>
     </div>
