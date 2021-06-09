@@ -11,11 +11,17 @@
 nav, .nav-links {
     @include flex(row, space-between, center);
 }
+#logo {
+    height: 7rem;
+    width: auto;
+}
 .links1 {
     width: 40%;
+    min-width: 25rem;
 }
 .links2 {
     width: 20%;
+    min-width: 15rem;
 }
 .nav-links {
     justify-content: space-evenly;
@@ -26,10 +32,10 @@ nav, .nav-links {
         @include text(1.1rem, $text-color, normal);
         padding: 0.5rem;
         cursor: pointer;
-        transition: all 0.6s;
+        transition: all 0.4s;
         &:hover {
-            color: rgb(213, 213, 213);
-            font-size: 1.15rem;
+            color: rgb(237, 237, 237);
+            font-size: 1.2rem;
         }
     }
 }
