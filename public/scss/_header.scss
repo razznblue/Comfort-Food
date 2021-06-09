@@ -34,7 +34,7 @@ nav, .nav-links {
         cursor: pointer;
         transition: all 0.4s;
         &:hover {
-            color: rgb(237, 237, 237);
+            color: $text-hover-color;
             font-size: 1.2rem;
         }
     }
