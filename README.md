@@ -1,7 +1,7 @@
 # Comfort Bank | Node.js Application
 
-# LIVE DEMO on Heroku
- - https://blooming-forest-34133.herokuapp.com/
+# Deploys
+ - View site on [Heroku](https://blooming-forest-34133.herokuapp.com/)
 
 # References and Help
 
