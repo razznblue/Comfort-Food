@@ -1,3 +1,5 @@
+
+// Transpile all code following this line with babel and use '@babel/preset-env' (aka ES6) preset.
 import { Member } from "./classes/member.js";
 import { Bank } from "./classes/bank.js";
 
@@ -48,4 +50,11 @@ const main = {
   },
 };
 
-main.init();
+//main.init();
+
+const learnMoreBtn = document.querySelector(".button");
+if (learnMoreBtn) {
+  learnMoreBtn.addEventListener("click", () => {
+    location.href = "/about";
+  })
+}

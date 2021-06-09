@@ -1,8 +1,7 @@
-const express = require("express");
+import express from 'express';
 const path = require("path");
 
 const app = express();
-const port = 3005;
 
 const index = {
     pageName: "index"
@@ -20,7 +19,6 @@ app.set("view engine", "ejs");
 
 // Tell our app to look in the styles folder for styling
 app.use(express.static("public/"));
-//app.use(express.static("public/styles/"));
 
 app.get("/", (req, res) => {
     res.render("index", index);
