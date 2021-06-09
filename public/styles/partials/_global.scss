@@ -1,5 +1,14 @@
-$text-color: #555555;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+//VARIABLES
+$theme-color: rgb(81, 57, 199);
+$text-color: #9f9f9f;
+
+// MIX INS
 @mixin flex($direction, $justify, $align) {
     display: flex;
     flex-direction: $direction;
@@ -17,14 +26,4 @@ $text-color: #555555;
     font-size: $size;
     color: $color;
     font-weight: $weight;
-}
-@mixin padding_margin($padding, $margin) {
-    padding: $padding;
-    margin: $margin;
-}
-
-.username {
-    font-size: 2rem;
-    color: $text-color;
-    border: 2px solid black;
 }

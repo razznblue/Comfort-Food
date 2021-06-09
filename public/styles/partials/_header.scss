@@ -1,0 +1,35 @@
+.header {
+    height: 10vh;
+    min-height: 3.8rem;
+    background: $theme-color;
+    padding: 1rem;
+    @include flex(row, center, center);
+}
+.header, nav {
+    width: 100%;
+}
+nav, .nav-links {
+    @include flex(row, space-between, center);
+}
+.links1 {
+    width: 40%;
+}
+.links2 {
+    width: 20%;
+}
+.nav-links {
+    justify-content: space-evenly;
+    height: 100%;
+
+    li {
+        list-style: none;
+        @include text(1.1rem, $text-color, normal);
+        padding: 0.5rem;
+        cursor: pointer;
+        transition: all 0.6s;
+        &:hover {
+            color: rgb(213, 213, 213);
+            font-size: 1.15rem;
+        }
+    }
+}

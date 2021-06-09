@@ -6,7 +6,7 @@ const port = 3005;
 
 const variables = {
     username: "driloves",
-    accounts: ""
+    accounts: "",
 }
 
 // Implement ejs tamplate engine to render html file from views folder
