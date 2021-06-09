@@ -14,7 +14,7 @@ app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
 // Tell our app to look in the styles folder for styling
-app.use(express.static("public/styles/css"));
+app.use(express.static("public/styles/"));
 
 app.get("/", (req, res) => {
     res.render("index", variables);
