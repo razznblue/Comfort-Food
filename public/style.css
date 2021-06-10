@@ -9,6 +9,9 @@ main {
 a {
   text-decoration: none; }
 
+li {
+  list-style: none; }
+
 .header {
   height: 10vh;
   min-height: 3.8rem;
@@ -80,12 +83,12 @@ main, .main-container {
   align-items: flex-start;
   height: 30%; }
 
-#main-heading {
+.main-heading {
   font-size: 3rem;
   color: #2e2e2e;
   font-weight: normal; }
 
-#main-sub-heading {
+.main-sub-heading {
   font-size: 1.5rem;
   color: #2e2e2e;
   font-weight: normal; }
@@ -105,3 +108,23 @@ main, .main-container {
   background: #442ac7;
   color: #eeeeee;
   padding: 0.6rem 1.3rem; }
+
+/* Contact Styles */
+#contact-container {
+  min-height: 20rem; }
+
+#contact-heading {
+  font-size: 3.5rem; }
+
+#contact-sub-heading {
+  font-size: 2rem; }
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 20vh; }
+
+.contact li {
+  font-size: 1.5rem; }

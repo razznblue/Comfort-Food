@@ -1,5 +1,3 @@
-
-// Transpile all code following this line with babel and use '@babel/preset-env' (aka ES6) preset.
 import { Member } from "./classes/member.js";
 import { Bank } from "./classes/bank.js";
 

@@ -9,10 +9,10 @@ main, .main-container {
     align-items: flex-start;
     height: 30%;
 }
-#main-heading {
+.main-heading {
     @include text(3rem, $dark-text-color, normal);
 }
-#main-sub-heading {
+.main-sub-heading {
     @include text(1.5rem, $dark-text-color, normal);
 }
 .button {
@@ -27,5 +27,23 @@ main, .main-container {
         background: $button-hover-color;
         color: $text-hover-color;
         padding: 0.6rem 1.3rem;
+    }
+}
+
+/* Contact Styles */
+#contact-container {
+    min-height: 20rem;
+}
+#contact-heading {
+    font-size: 3.5rem;
+}
+#contact-sub-heading {
+    font-size: 2rem;
+}
+.contact {
+    @include flex(column, space-evenly, flex-start);
+    height: 20vh;
+    li {
+        font-size: 1.5rem;
     }
 }
