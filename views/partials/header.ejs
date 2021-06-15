@@ -9,8 +9,8 @@
                 <li class="nav-item"><%- %></li>
             </ul>
             <ul class="nav-links links2">
-                <li><a href="#signup">Sign Up</a></li>
-                <li><a href="#login">Login</a></li>
+                <li><a <% if ( pageName === "signup" ) { %> class="active" <% } %> href="../signup">Sign Up</a></li>
+                <li><a <% if ( pageName === "login" ) { %> class="active" <% } %> href="../login">Login</a></li>
             </ul>
         </nav>
     </div>

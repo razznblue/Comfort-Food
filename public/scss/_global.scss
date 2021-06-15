@@ -5,7 +5,7 @@ $button-hover-color: rgb(68, 42, 199);
 $dark-text-color: #2e2e2e;
 $text-color: #cecece;
 $text-hover-color: #eeeeee;
-$background-color: rgb(206, 179, 219);
+$background-color: rgb(233, 233, 233);
 
 // MIX INS
 @mixin flex($direction, $justify, $align) {
@@ -41,4 +41,18 @@ a {
 }
 li {
     list-style: none;
+}
+.button {
+    background: $theme-color;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    @include text(1rem, $text-color, normal);
+    transition: all 0.4s;
+    &:hover {
+        cursor: pointer;
+        background: $button-hover-color;
+        color: $text-hover-color;
+        padding: 0.6rem 1.5rem;
+    }
 }
