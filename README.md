@@ -13,4 +13,3 @@
 ## Useful Heroku debugging commands
  - heroku logs --tail -> get a report of previous deployments after pushing code to heroku
  - git push heroku master -> push all code and changes to the master branch.
- - 
