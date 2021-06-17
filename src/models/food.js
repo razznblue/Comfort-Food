@@ -7,7 +7,7 @@ const foodSchema = new mongoose.Schema (
             required: true,
         },
         ingredients: [],
-        menu: { type: Schema.Types.ObjectId, ref: 'Menu' },
+        menu: { type: mongoose.Schema.Types.ObjectId, ref: 'Menu' },
     },
     { timestamps: true },
 );

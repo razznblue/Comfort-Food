@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
+    "start": "nodemon --experimental-modules app.js",
     "scss": "node-sass --watch public/ -o public/"
   },
   "repository": {
@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/KaipoJames/Bank-System---Node.js#readme",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "mongoose": "^5.12.14",
     "node-sass": "^6.0.0",
