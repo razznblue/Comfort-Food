@@ -12,6 +12,7 @@
   - mongoose v5.12.14
   - dotenv v10.0.0
   - esm v3.2.25
+  - body-parser v1.19.0
 
 # References and Help
 

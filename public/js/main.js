@@ -70,7 +70,7 @@ if (homeLink.classList.contains("active")) {
 
 
 if (document.URL.includes("signup") || document.URL.includes("login")) {
-  console.log("You are on a page with a form!");
+  //console.log("You are on a page with a form!");
   const form = document.querySelector(".form");
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {

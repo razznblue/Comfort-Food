@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/KaipoJames/Bank-System---Node.js#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "esm": "^3.2.25",

@@ -1,12 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require("path");
+const bodyParser = require('body-parser');
 require('dotenv').config();
 
 // Enables the use of ES6 import statements throughout our application. (ESM Package)
 require = require("esm")(module/*, options*/);
 
 const models = require('./src/models/index.js');
+const router = require("./routes.js");
+
 
 const app = express();
 
@@ -31,8 +34,11 @@ const login = {
 app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
-// Tell our app to look in the styles folder for styling
+// Tell our app to look in the public folder to access its contents
 app.use(express.static("public/"));
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 
 
 // ROUTES
@@ -54,11 +60,16 @@ app.get("/login", (req, res) => {
 
 
 // Connect To MongoDB
-mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true, }).then(
-    () => { console.log("Connected to mongoDB Succesfully!"); },
+mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true, })
+.then(
+    () => { 
+        console.log("Connected to mongoDB Succesfully!"); 
+        app.use("/", router);
+
+        // Start Server
+        app.listen(process.env.PORT || 5000, () => {
+            console.log("Server is listening on port 5000");
+        });
+    },
     err => { console.log(err) },
 );
-// Start Server
-app.listen(process.env.PORT || 5000, () => {
-    console.log("Server is listening on port 5000");
-});
