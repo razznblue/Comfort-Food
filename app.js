@@ -2,12 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require("path");
 require('dotenv').config();
-require = require("esm")(module/*, options*/)
+
+// Enables the use of ES6 import statements throughout our application. (ESM Package)
+require = require("esm")(module/*, options*/);
+
+const models = require('./src/models/index.js');
 
 const app = express();
 
-//import models, { connectDb } from './src/models/index.js';
-
+// Variables to determine the active page(passed into their corresponding route below)
 const index = {
     pageName: "index"
 }
@@ -49,14 +52,9 @@ app.get("/login", (req, res) => {
     res.render("login", login);
 });
 
-// Connect To DB
-// mongoose.connect(process.env.URI, (err) => {
-//     if (err) throw err;
-//     console.log("DB Connected Successfully");
-// });
 
 // Connect To MongoDB
-mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true }).then(
+mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true, }).then(
     () => { console.log("Connected to mongoDB Succesfully!"); },
     err => { console.log(err) },
 );

@@ -3,6 +3,16 @@
 # Deploys
  - View site on [Heroku](https://blooming-forest-34133.herokuapp.com/)
 
+# Dependencies
+  - express v4.17.1
+  - nodemon v2.0.7
+  - path v0.12.7
+  - ejs v3.1.6
+  - node-sass v6.0.0
+  - mongoose v5.12.14
+  - dotenv v10.0.0
+  - esm v3.2.25
+
 # References and Help
 
 ## Deployment Help
