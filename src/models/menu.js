@@ -6,8 +6,8 @@ const menuSchema = new mongoose.Schema (
             type: String,
             required: true,
         },
-        foodList: [{ type: Schema.Types.ObjectId, ref: 'Food' }],
-        user: { type: Schema.Types.ObjectId, ref: 'User' },
+        foodList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Food' }],
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     },
     { timestamps: true },
 );

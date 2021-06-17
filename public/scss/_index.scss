@@ -15,20 +15,6 @@ main, .main-container {
 .main-sub-heading {
     @include text(1.5rem, $dark-text-color, normal);
 }
-.button {
-    background: $theme-color;
-    border: none;
-    padding: 0.6rem 1rem;
-    border-radius: 5px;
-    @include text(1rem, $text-color, normal);
-    transition: all 0.4s;
-    &:hover {
-        cursor: pointer;
-        background: $button-hover-color;
-        color: $text-hover-color;
-        padding: 0.6rem 1.5rem;
-    }
-}
 
 /* Contact Styles */
 #contact-container {

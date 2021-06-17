@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { Menu } from './menu';
 
 const userSchema = new mongoose.Schema (
     {
@@ -17,7 +16,7 @@ const userSchema = new mongoose.Schema (
             type: String,
             required: true,
         },
-        menus: [{type: Schema.Types.ObjectId, ref: 'Menu'}],
+        menus: [{type: mongoose.Schema.Types.ObjectId, ref: 'Menu'}],
     },
     { timestamps: true },
 );
@@ -39,7 +38,7 @@ userSchema.statics.findByLogin = async function (login) {
 // Upon deletion of a user, it's Menu's will get deleted as well.
 userSchema.pre('remove', function(next) {
     this.model('Menu').deleteMany({ user: this._id }, next);
-  });
+});
 
 const User = mongoose.model('User', userSchema);
  
