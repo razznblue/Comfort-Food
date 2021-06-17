@@ -50,9 +50,22 @@ const main = {
 
 //main.init();
 
-const learnMoreBtn = document.querySelector(".button");
-if (learnMoreBtn) {
-  learnMoreBtn.addEventListener("click", () => {
+const form = document.querySelector(".form");
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    form.style.opacity = "1";
+  }, 400);
+});
+
+const btn1 = document.querySelector(".button1");
+if (btn1) {
+  btn1.addEventListener("click", () => {
     location.href = "/about";
-  })
+  });
+}
+const btn2 = document.querySelector(".button2");
+if (btn2) {
+  btn2.addEventListener("click", () => {
+    location.href = "/signup";
+  });
 }
