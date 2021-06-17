@@ -50,22 +50,31 @@ const main = {
 
 //main.init();
 
-const form = document.querySelector(".form");
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    form.style.opacity = "1";
-  }, 400);
-});
 
-const btn1 = document.querySelector(".button1");
-if (btn1) {
-  btn1.addEventListener("click", () => {
-    location.href = "/about";
-  });
+const homeLink = document.querySelector("#home");
+if (homeLink.classList.contains("active")) {
+  //console.log("You are on the home page!");
+  const btn1 = document.querySelector(".button1");
+  if (btn1) {
+    btn1.addEventListener("click", () => {
+      location.href = "/about";
+    });
+  }
+  const btn2 = document.querySelector(".button2");
+  if (btn2) {
+    btn2.addEventListener("click", () => {
+      location.href = "/signup";
+    });
+  }
 }
-const btn2 = document.querySelector(".button2");
-if (btn2) {
-  btn2.addEventListener("click", () => {
-    location.href = "/signup";
+
+
+if (document.URL.includes("signup") || document.URL.includes("login")) {
+  console.log("You are on a page with a form!");
+  const form = document.querySelector(".form");
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => {
+      form.style.opacity = "1";
+    }, 400);
   });
 }
