@@ -13,6 +13,10 @@
   - dotenv v10.0.0
   - esm v3.2.25
   - body-parser v1.19.0
+  - express-session v1.17.2
+  - passport v0.4.1
+  - passport-local v1.0.0
+  - passport-local-mongoose v6.1.0
 
 # References and Help
 

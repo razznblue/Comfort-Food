@@ -11,11 +11,16 @@
 <body>
     <%- include('partials/header.ejs') %>
     <main>
-        <form class="form" id="login-form" action="">
+        <form class="form" id="login-form" action="/login" method="POST">
+            <% if (error) { %>
+                <p style="color: red;">Incorrect Credentials</p> 
+            <% } %>
             <h1>Log In Form</h1>
-            <input type="email" placeholder="Email Address">
-            <input type="password" placeholder="Password">
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
             <button type="submit" class="button" id="login-button">Log In</button>
+            <p>Don't have an account? Register <a href="./signup">here</a>.</p>
+            <p><a href="./login">Forgot password?</a>.</p>
         </form>
     </main>
     <%- include('partials/footer.ejs') %>

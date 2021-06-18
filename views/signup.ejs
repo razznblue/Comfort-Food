@@ -11,14 +11,14 @@
 <body>
     <%- include('partials/header.ejs') %>
     <main>
-        <form class="form" id="signup-form" action="">
+        <form class="form" id="signup-form" action="/signup" method="POST">
             <h1>Sign Up Form</h1>
-            <input type="text" placeholder="First Name">
-            <input type="text" placeholder="Last Name">
-            <input type="email" placeholder="Email Address">
-            <input type="password" placeholder="Password">
-            <input type="password" placeholder="Confirm Password">
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="email" placeholder="Email Address" name="email" required>
+            <input type="password" placeholder="Password" name="password" requird>
+            <input type="password" placeholder="Confirm Password" name="confirm-password" required>
             <button type="submit" class="button" id="signup-button">Sign Up</button>
+            <p>Already have an account? Login <a href="./login">here</a>.</p>
         </form>
     </main>
     <%- include('partials/footer.ejs') %>

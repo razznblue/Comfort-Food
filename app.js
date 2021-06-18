@@ -2,60 +2,180 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require("path");
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+
 require('dotenv').config();
 
 // Enables the use of ES6 import statements throughout our application. (ESM Package)
 require = require("esm")(module/*, options*/);
 
-const models = require('./src/models/index.js');
 const router = require("./routes.js");
+const User = require('./src/models/user.js');
+const Menu = require('./src/models/menu.js');
+const Food = require('./src/models/food.js');
+
+let userIsLoggedIn = false;
 
 
 const app = express();
 
-// Variables to determine the active page(passed into their corresponding route below)
-const index = {
-    pageName: "index"
-}
-const about = {
-    pageName: "about"
-}
-const contact = {
-    pageName: "contact"
-}
-const signup = {
-    pageName: "signup"
-}
-const login = {
-    pageName: "login"
-}
 
 // Implement ejs tamplate engine to render html file from views folder
 app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
-// Tell our app to look in the public folder to access its contents
+// Middleware
 app.use(express.static("public/"));
-app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: "mySecret",
+    resave: false,
+    saveUninitialized: true,
+}));
+app.use(express.urlencoded({ extended: true })); // Enable our form data to be accessed by the 'req' variable in our routes
 app.use(bodyParser.json());
 
+// Passport.js
+app.use(passport.initialize()); // initialize passport
+app.use(passport.session()); // Keep the session running when you switch pages, so you don't get logged out
+
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+passport.deserializeUser((id, done) =>  {
+    User.findById(id, (err, user) => {
+        done(err, user);
+    });
+});
+
+passport.use(new localStrategy((username, password, done) => {
+    User.findOne({ username: username }, (err, user) => {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false, { message: "User Does not Exist. Incorrect Login Credentials." }); }
+
+        bcrypt.compare(password, user.password, (err, res) => {
+            if (err) { return done(err); }
+            if (res === false) { return done(null, false, { message: "Incorrect Password." }) }
+
+            return done(null, user);
+        });
+    })
+}));
+
+
+//FUNCTIONS
+const isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) { req.isLogged = true; return next(); }
+    res.redirect("/login");
+}
+const isLoggedOut = (req, res, next) => {
+    if (!req.isAuthenticated()) { req.isLogged = false; return next(); }
+    res.redirect("/");
+}
 
 
 // ROUTES
-app.get("/", (req, res) => {
+app.get("/", isLoggedIn, (req, res) => {
+    const index = { pageName: "index", isLoggedIn: req.isLogged, }
     res.render("index", index);
 });
 app.get("/about", (req, res) => {
+    const about = { pageName: "about", isLoggedIn: req.isLogged, }
     res.render("about", about);
 });
 app.get("/contact", (req, res) => {
+    const contact = { pageName: "contact", isLoggedIn: req.isLogged, }
     res.render("contact", contact);
 });
+
 app.get("/signup", (req, res) => {
+    const signup = { pageName: "signup", isLoggedIn: req.isLogged, }
     res.render("signup", signup);
 });
-app.get("/login", (req, res) => {
-    res.render("login", login);
+app.post("/signup", async (req, res) => {
+    console.log("body: " + req.body);
+	const user = new User({
+		username: req.body.username,
+		email: req.body.email,
+		password: req.body.password,
+	});
+	await user.save();
+	res.send(user);
+});
+
+app.get("/login", isLoggedOut, (req, res) => {
+    const login = {
+        pageName: "login",
+        isLoggedIn: req.isLogged,
+        error: req.query.error,
+    }
+    res.render("login", login );
+});
+app.post("/login", passport.authenticate('local', {
+    successRedirect: "/",
+    failureRedirect: "/login?error=true"
+}));
+
+app.get('/logout', function(req, res){
+    console.log('logging out');
+    req.session.destroy(function (err) {
+        res.redirect('/login');
+    });
+    // req.logout();
+    // res.redirect('/');
+});
+
+app.post("/signup", async (req, res) => {
+    const exists = await User.exists({ username: req.body.username });
+    if (exists) {
+        console.log("User Already Exists");
+        res.redirect("/signup");
+        return;
+    }
+
+    bcrypt.genSalt(10, (err, salt) => {
+        if (err) return next(err);
+        bcrypt.hash("password", salt, (err, hash) => {
+            if (err) return next(err);
+            const user = new User({
+                username: req.body.username,
+                email: req.body.email,
+                password: req.body.password,
+            });
+            user.save();
+            res.redirect("/");
+            console.log("Registered Successfully!");
+        });
+    });
+});
+
+
+// Setup Admin User
+app.get("/setup", async (req, res) => {
+  const exists = await User.exists({ username: "admin" });
+
+  if (exists) {
+      console.log("Exists");
+      res.redirect("/");
+      return;
+  }
+
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) return next(err);
+    bcrypt.hash("password", salt, (err, hash) => {
+        if (err) return next(err);
+        const adminUser = new User({
+            username: "admin",
+            email: "kaipojames12@gmail.com",
+            password: hash,
+        });
+        adminUser.save();
+        res.redirect("/");
+    });
+  });
 });
 
 

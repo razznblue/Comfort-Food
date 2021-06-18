@@ -19,7 +19,7 @@ router.get("/foods", async (req, res) => {
 });
 
 // Create User
-router.post("/users", async (req, res) => {
+router.post("/signup", async (req, res) => {
     console.log("body: " + req.body);
 	const user = new User({
 		username: req.body.username,
