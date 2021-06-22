@@ -117,8 +117,6 @@ app.get('/logout', function(req, res){
     req.session.destroy(function (err) {
         res.redirect('/login');
     });
-    // req.logout();
-    // res.redirect('/');
 });
 
 app.get("/signup", (req, res) => {
