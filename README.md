@@ -14,6 +14,7 @@
   - esm v3.2.25
   - body-parser v1.19.0
   - express-session v1.17.2
+  - memorystore v1.6.6
   - passport v0.4.1
   - passport-local v1.0.0
   - passport-local-mongoose v6.1.0
