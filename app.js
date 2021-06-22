@@ -32,7 +32,7 @@ app.use(session({
     saveUninitialized: true,
 }));
 app.use(express.urlencoded({ extended: true })); // Enable our form data to be accessed by the 'req' variable in our routes
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Passport.js
 app.use(passport.initialize()); // initialize passport
@@ -88,21 +88,6 @@ app.get("/contact", isLoggedIn, (req, res) => {
     res.render("contact", contact);
 });
 
-app.get("/signup", (req, res) => {
-    const signup = { pageName: "signup", isLoggedIn: req.isLogged, }
-    res.render("signup", signup);
-});
-app.post("/signup", async (req, res) => {
-    console.log("body: " + req.body);
-	const user = new User({
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password,
-	});
-	await user.save();
-	res.send(user);
-});
-
 app.get("/login", isLoggedOut, (req, res) => {
     const login = {
         pageName: "login",
@@ -111,10 +96,11 @@ app.get("/login", isLoggedOut, (req, res) => {
     }
     res.render("login", login );
 });
-app.post("/login", passport.authenticate('local', {
-    successRedirect: "/",
-    failureRedirect: "/login?error=true"
-}));
+app.post("/login", passport.authenticate('local', { 
+        successRedirect: "/", 
+        failureRedirect: "/login?error=true"
+    },
+));
 
 app.get('/logout', function(req, res){
     console.log('logging out');
@@ -125,22 +111,30 @@ app.get('/logout', function(req, res){
     // res.redirect('/');
 });
 
+app.get("/signup", (req, res) => {
+    const signup = { 
+        pageName: "signup", 
+        isLoggedIn: req.isLogged, 
+        error: req.query.error,
+    }
+    res.render("signup", signup);
+});
+
 app.post("/signup", async (req, res) => {
     const exists = await User.exists({ username: req.body.username });
     if (exists) {
         console.log("User Already Exists");
-        res.redirect("/signup");
+        res.redirect("/signup?error=true");
         return;
     }
-
     bcrypt.genSalt(10, (err, salt) => {
         if (err) return next(err);
-        bcrypt.hash("password", salt, (err, hash) => {
+        bcrypt.hash(req.body.password, salt, (err, hash) => {
             if (err) return next(err);
             const user = new User({
                 username: req.body.username,
                 email: req.body.email,
-                password: req.body.password,
+                password: hash,
             });
             user.save();
             res.redirect("/");
@@ -153,7 +147,6 @@ app.post("/signup", async (req, res) => {
 // Setup Admin User
 app.get("/setup", async (req, res) => {
   const exists = await User.exists({ username: "admin" });
-
   if (exists) {
       console.log("Exists");
       res.redirect("/");
@@ -166,7 +159,7 @@ app.get("/setup", async (req, res) => {
         if (err) return next(err);
         const adminUser = new User({
             username: "admin",
-            email: "kaipojames12@gmail.com",
+            email: "kaiposemail@yahoo.com",
             password: hash,
         });
         adminUser.save();

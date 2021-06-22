@@ -18,16 +18,4 @@ router.get("/foods", async (req, res) => {
 	res.send(foods);
 });
 
-// Create User
-router.post("/signup", async (req, res) => {
-    console.log("body: " + req.body);
-	const user = new User({
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password,
-	});
-	await user.save();
-	res.send(user);
-});
-
 module.exports = router;
