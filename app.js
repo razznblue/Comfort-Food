@@ -17,9 +17,6 @@ const User = require('./src/models/user.js');
 const Menu = require('./src/models/menu.js');
 const Food = require('./src/models/food.js');
 
-let userIsLoggedIn = false;
-
-
 const app = express();
 
 
@@ -82,11 +79,11 @@ app.get("/", isLoggedIn, (req, res) => {
     const index = { pageName: "index", isLoggedIn: req.isLogged, }
     res.render("index", index);
 });
-app.get("/about", (req, res) => {
+app.get("/about", isLoggedIn, (req, res) => {
     const about = { pageName: "about", isLoggedIn: req.isLogged, }
     res.render("about", about);
 });
-app.get("/contact", (req, res) => {
+app.get("/contact", isLoggedIn, (req, res) => {
     const contact = { pageName: "contact", isLoggedIn: req.isLogged, }
     res.render("contact", contact);
 });
