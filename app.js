@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require("path");
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session)
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
@@ -27,10 +28,19 @@ app.set("view engine", "ejs");
 // Middleware
 app.use(express.static("public/"));
 app.use(session({
-    secret: "mySecret",
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
     resave: false,
+    secret: 'mySecret',
     saveUninitialized: true,
-}));
+}))
+// app.use(session({
+//     secret: "mySecret",
+//     resave: false,
+//     saveUninitialized: true,
+// }));
 app.use(express.urlencoded({ extended: true })); // Enable our form data to be accessed by the 'req' variable in our routes
 app.use(express.json());
 
