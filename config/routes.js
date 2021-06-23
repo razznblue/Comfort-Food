@@ -14,6 +14,23 @@ module.exports = (passport) => {
         const users = await User.find();
         res.send(users);
     });
+    router.get("/profile", (req, res) => {
+        res.redirect("/users/" + req.user.username);
+    });
+    router.get("/users/:username", Util.isLoggedIn, async (req, res) => {
+        const user = await User.findOne({ username: req.params.username });
+        console.log(user.email);
+        const data = {
+            username: req.params.username,
+            email: user.email,
+            dateJoined: user.createdAt,
+            pageName: 'myProfile',
+            isLoggedIn: req.isLogged
+        }
+        if (user) { res.render("profile", data); }
+        else { res.send("User Not Found"); }
+    });
+
     router.get("/menus", async (req, res) => {
         const menus = await Menu.find();
         res.send(menus);

@@ -18,9 +18,11 @@
             <h1>Sign Up Form</h1>
             <input type="text" placeholder="Username" name="username" required>
             <input type="email" placeholder="Email Address" name="email" required>
-            <input type="password" placeholder="Password" name="password" requird>
-            <input type="password" placeholder="Confirm Password" name="confirm-password" required>
+            <input class="password" type="password" placeholder="Password" name="password" required>
+            <input class="confirm-password" type="password" placeholder="Confirm Password" name="confirm-password" required>
             <button type="submit" class="button" id="signup-button">Sign Up</button>
+            <p class="error-msg" style="color: red;"></p>
+            <p class="form-error-msg" style="color: red;"></p>
             <p>Already have an account? Login <a href="./login">here</a>.</p>
         </form>
     </main>

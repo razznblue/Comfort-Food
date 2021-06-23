@@ -51,6 +51,56 @@ const main = {
 //main.init();
 
 
+const pass1 = document.querySelector(".password");
+const pass2 = document.querySelector(".confirm-password");
+const errorMsg = document.querySelector(".error-msg");
+const formErrorMsg = document.querySelector(".form-error-msg");
+const signupButton = document.querySelector("#signup-button");
+
+const valuesAreEmpty = (pass1, pass2) => {
+  pass1.value.length > 0 || pass2.value.length > 0 ? false : true;
+}
+const greaterThanSeven = (pass) => {
+  console.log("pass: " + pass.value.length);
+  if (pass.value.length > 7) { return true; } else { return false;}
+}
+const hasNumber = (string) => {
+  return /\d/.test(string);
+}
+
+const toggleErrorMsg = () => {
+  if (pass1.value === pass2.value || valuesAreEmpty(pass1, pass2)) {
+    errorMsg.innerHTML = "";
+    signupButton.style.pointerEvents = "all";
+    signupButton.tabIndex = "0";
+  } 
+  if (pass1.value !== pass2.value) {
+    errorMsg.innerHTML = "Passwords Do Not Match";
+    signupButton.style.pointerEvents = "none";
+    signupButton.tabIndex = "-1";
+  }
+}
+
+
+
+let counter = 0;
+const timer = {
+  start() {
+    setInterval(() => {
+      counter++;
+      toggleErrorMsg();
+      if (counter === -1) {
+        alert("Your Session has timed out. Click OK to refresh the page.");
+        counter = 0; 
+        location.reload();
+      }
+    }, 1000);
+  },
+}
+if (document.URL.includes("signup")) {
+  timer.start();
+}
+
 const homeLink = document.querySelector("#home");
 if (homeLink.classList.contains("active")) {
   //console.log("You are on the home page!");
@@ -70,11 +120,22 @@ if (homeLink.classList.contains("active")) {
 
 
 if (document.URL.includes("signup") || document.URL.includes("login")) {
-  //console.log("You are on a page with a form!");
   const form = document.querySelector(".form");
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       form.style.opacity = "1";
     }, 400);
   });
+
+  form.addEventListener("submit", (e) => {
+    if (!greaterThanSeven(pass1) || !greaterThanSeven(pass2)) {
+      e.preventDefault();
+      formErrorMsg.innerHTML = "Password must be longer than 7 characters";
+    } else if (!hasNumber(pass1.value) || !hasNumber(pass2.value)) {
+      e.preventDefault();
+      formErrorMsg.innerHTML = "Password must contain at least 1 number";
+    }
+    e.returnValue = true;
+  });
 }
+

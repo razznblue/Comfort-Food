@@ -25,7 +25,7 @@ app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
 
 //MIDDLEWARE
-addMiddleware(app);
+addMiddleware(app, express);
 
 //PASSPORT + LOCAL STARTEGY
 addPassport(passport, User);
