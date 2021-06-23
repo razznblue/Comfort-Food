@@ -19,7 +19,6 @@ module.exports = (passport) => {
     });
     router.get("/users/:username", Util.isLoggedIn, async (req, res) => {
         const user = await User.findOne({ username: req.params.username });
-        console.log(user.email);
         const data = {
             username: req.params.username,
             email: user.email,
@@ -29,6 +28,20 @@ module.exports = (passport) => {
         }
         if (user) { res.render("profile", data); }
         else { res.send("User Not Found"); }
+    });
+    router.get("/myMenus", (req, res) => {
+        res.redirect("/users/" + req.user.username + "/menus");
+    });
+    router.get("/users/:username/menus", Util.isLoggedIn, async (req, res) => {
+        const user = await User.findOne({ username: req.params.username});
+        const data = {
+            username: req.params.username,
+            menus: user.menus,
+            pageName: 'myMenus',
+            isLoggedIn: req.isLogged
+        }
+        if (user) { res.render("menu", data); }
+        else { res.send("Menus Not Found"); }
     });
 
     router.get("/menus", async (req, res) => {
@@ -40,16 +53,16 @@ module.exports = (passport) => {
         res.send(foods);
     });
 
-    router.get("/", Util.isLoggedIn, (req, res) => {
-        const index = { pageName: "index", isLoggedIn: req.isLogged, }
+    router.get("/", Util.isLoggedIn, async (req, res) => {
+        const index = { pageName: "index", isLoggedIn: req.isLogged }
         res.render("index", index);
     });
-    router.get("/about", Util.isLoggedIn, (req, res) => {
-        const about = { pageName: "about", isLoggedIn: req.isLogged, }
+    router.get("/about", Util.isLoggedIn, async (req, res) => {
+        const about = { pageName: "about", isLoggedIn: req.isLogged }
         res.render("about", about);
     });
-    router.get("/contact", Util.isLoggedIn, (req, res) => {
-        const contact = { pageName: "contact", isLoggedIn: req.isLogged, }
+    router.get("/contact", Util.isLoggedIn, async (req, res) => {
+        const contact = { pageName: "contact", isLoggedIn: req.isLogged }
         res.render("contact", contact);
     });
 

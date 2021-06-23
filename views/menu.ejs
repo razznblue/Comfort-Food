@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="img/favicon-16x16.png"/>
+    <title>Comfort Food - <%= username %> (Menus)</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+    <main>
+        <div class="main-container">
+            <h1 class="main-heading">My Menus</h1>
+            <p class="main-sub-heading">Organize your different menus from this page!</p>
+            <div class="menus">
+                <div class="menus"><%= menus %></div>
+            </div>
+        </div>
+    </main>
+    <%- include('partials/footer.ejs') %>
+
+    <script type="module" type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
