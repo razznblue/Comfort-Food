@@ -36,7 +36,7 @@ module.exports = (passport) => {
         res.render("contact", contact);
     });
 
-    router.get("/signup", (req, res) => {
+    router.get("/signup", Util.isLoggedOut, (req, res) => {
         const signup = { 
             pageName: "signup", 
             isLoggedIn: req.isLogged, 

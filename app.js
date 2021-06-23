@@ -31,17 +31,18 @@ addMiddleware(app);
 addPassport(passport, User);
 addLocalStrategy(passport, User);
 
+// // CONNECT TO EXPRESS SERVER, THEN TO MongoDB
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Server is listening on port 5000");
 
-// CONNECT TO MONGODB, THEN TO THE SERVER
-mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true, })
-.then(
-    () => { 
+    mongoose.connect(process.env.URI, {
+        useNewUrlParser: true, 
+        useUnifiedTopology: true, 
+        useCreateIndex: true, 
+        useFindAndModify: true,
+    }).then(() => {
         console.log("Connected to mongoDB Succesfully!"); 
-
-        // Start Server
-        app.listen(process.env.PORT || 5000, () => {
-            console.log("Server is listening on port 5000");
-        });
     },
     err => { console.log(err) },
-);
+    );
+});
