@@ -14,9 +14,16 @@ main {
     justify-content: flex-start;
     align-items: center;
     margin: 1rem;
-    width: 100%;
+    width: 95%;
     min-height: 15vh;
     padding: 0 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.5s;
+    opacity: 0.7;
+}
+.user-container:hover {
+    opacity: 1;
+    background: rgb(176, 176, 176);
 }
 .user-container > * {
     margin: 0.5rem;

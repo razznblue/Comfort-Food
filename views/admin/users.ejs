@@ -18,6 +18,7 @@
                     <p class="menus"><a href="#menus">Menus</a></p>
                     <p>Date Joined: <%= users[i].createdAt %></p>
                     <p>Last Updated: <%= users[i].updatedAt %></p>
+                    <p><a href="users/delete/<%= users[i].username %>">Delete User</a></p>
                 </div>
             <% } %>
         </div>
