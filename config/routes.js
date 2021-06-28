@@ -185,13 +185,19 @@ module.exports = (passport) => {
     });
 
     // PATCH REQUESTS
-
     router.get("updateUser", (req, res) => {
         res.redirect("/users/" + req.user.username);
     });
     
-
     // DELETE REQUESTS
+    router.delete("/users/:username/delete", (req, res) => {
+        console.log("ROUTER.DELETE: deleting user...");
+        let query = {username:req.params.username};
+        User.remove(query, (err) => {
+            if (err) console.log(err);
+            res.send("User Deleted Successfully.")
+        });
+    });
 
     return router;
 }

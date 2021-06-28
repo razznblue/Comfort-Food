@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComfortFood | All Users</title>
     <link rel="stylesheet" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
@@ -18,10 +19,12 @@
                     <p class="menus"><a href="#menus">Menus</a></p>
                     <p>Date Joined: <%= users[i].createdAt %></p>
                     <p>Last Updated: <%= users[i].updatedAt %></p>
-                    <p><a href="users/delete/<%= users[i].username %>">Delete User</a></p>
+                    <p><a class="delete-user btn-danger" data-id="<%= users[i].username %>" href="#">Delete User</a></p>
                 </div>
             <% } %>
         </div>
     </main>
+
+    <script src="/js/modules/users.js"></script>
 </body>
 </html>
