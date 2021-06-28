@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png"/>
     <title><%= username %> | Profile</title>
     <link rel="stylesheet" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <%- include('partials/header.ejs') %>
@@ -19,9 +20,12 @@
                 <p class="date-joined">Date Joined: <%= dateJoined %></p>
                 <p class="update"><a href="/update">Update My Info</a></p>
                 <p class="my-menus"><a href="/myMenus">My Menus</a></p>
+                <p><a class="delete-user btn-danger" data-id="<%= username %>" href="#">Delete Account</a></p>
             </div>
         </div>
     </main>
     <%- include('partials/footer.ejs') %>
+
+    <script src="/js/modules/users.js"></script>
 </body>
 </html>
