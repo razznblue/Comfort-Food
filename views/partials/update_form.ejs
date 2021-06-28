@@ -1,0 +1,13 @@
+<form class="form" id="update-form" action="/users/<%= username %>/update" method="POST">
+    <% if (error) { %>
+        <p style="color: red;">Please correct the fields below.</p> 
+    <% } %>
+    <h1>Update Info</h1>
+    <input type="text" placeholder="Username" name="username" value="<%= username %>">
+    <input type="email" placeholder="Email Address" name="email" value="<%= email %>">
+    <input class="password" type="password" placeholder="Password" name="password">
+    <input class="confirm-password" type="password" placeholder="Confirm Password" name="confirm-password">
+    <button type="submit" class="button" id="update-button">Update</button>
+    <p class="error-msg" style="color: red;"></p>
+    <p class="form-error-msg" style="color: red;"></p>
+</form>

@@ -1,0 +1,23 @@
+main {
+    @include flex(row, center, flex-start);
+    height: 300vh;
+}
+.users-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.user-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem;
+    width: 100%;
+    min-height: 15vh;
+    padding: 0 1rem;
+}
+.user-container > * {
+    margin: 0.5rem;
+}

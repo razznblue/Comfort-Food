@@ -12,7 +12,11 @@ module.exports = (passport) => {
     // GET REQUESTS
     router.get("/users", async (req, res) => {
         const users = await User.find();
-        res.send(users);
+        res.render('admin/users', {
+            pageName: 'All Users',
+            users: users,
+            isLoggedIn: req.isLogged
+        });
     });
     router.get("/profile", (req, res) => {
         res.redirect("/users/" + req.user.username);
@@ -83,11 +87,24 @@ module.exports = (passport) => {
         res.render("login", login );
     });
     router.get('/logout', function(req, res){
-        console.log('logging out');
         req.session.destroy(function (err) {
             res.redirect('/login');
         });
     });
+    router.get("/update", (req, res) => {
+        res.redirect("/users/" + req.user.username + "/update");
+    });
+    router.get('/users/:username/update', Util.isLoggedIn, async (req, res) => {
+        const user = await User.findOne({ username: req.params.username});
+        const data = { 
+            username: user.username,
+            email: user.email,
+            pageName: "update", 
+            isLoggedIn: req.isLogged, 
+            error: req.query.error,
+        }
+        if (user) { res.render("update", data); }
+    })
 
     // Setup Admin User
     router.get("/setup", async (req, res) => {
@@ -143,6 +160,38 @@ module.exports = (passport) => {
             });
         });
     });
+
+    router.post("/users/:username/update", async (req, res) => {
+        let user = {}
+        user.username = req.body.username;
+        user.email = req.body.email;
+
+        let query = { username: req.params.username };
+
+        bcrypt.genSalt(10, (err, salt) => {
+            if (err) return next(err);
+            bcrypt.hash(req.body.password, salt, (err, hash) => {
+                if (err) return next(err);
+                user.password = hash;
+                User.update(query, user, (err) => {
+                    if (err) return next(err);
+                    res.redirect("/profile");
+                    console.log("Registered Successfully!");
+                });
+            });
+        });
+
+
+    });
+
+    // PATCH REQUESTS
+
+    router.get("updateUser", (req, res) => {
+        res.redirect("/users/" + req.user.username);
+    });
+    
+
+    // DELETE REQUESTS
 
     return router;
 }

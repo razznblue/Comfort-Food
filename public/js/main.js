@@ -119,7 +119,7 @@ if (homeLink.classList.contains("active")) {
 }
 
 
-if (document.URL.includes("signup") || document.URL.includes("login")) {
+if (document.URL.includes("signup") || document.URL.includes("login") || document.URL.includes("update")) {
   const form = document.querySelector(".form");
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
@@ -135,6 +135,8 @@ if (document.URL.includes("signup") || document.URL.includes("login")) {
       e.preventDefault();
       formErrorMsg.innerHTML = "Password must contain at least 1 number";
     }
+     
+    console.log("form ready!");
     e.returnValue = true;
   });
 }
