@@ -82,7 +82,7 @@ nav, .nav-links {
 }
 
 .links1 {
-  width: 40%;
+  width: 55%;
   min-width: 25rem;
 }
 
@@ -300,5 +300,9 @@ main {
 
 .user-container > * {
   margin: 0.5rem;
+}
+
+.is-admin {
+  color: red;
 }
 /*# sourceMappingURL=style.css.map */

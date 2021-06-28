@@ -1,8 +1,10 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
-const User = require('../src/models/user.js');
-const Menu = require('../src/models/menu.js');
-const Food = require('../src/models/food.js');
+
+const User = require('../src/models/user');
+const Menu = require('../src/models/menu');
+const Food = require('../src/models/food');
+
 const Util = require("./functions.js");
 
 
@@ -10,12 +12,17 @@ module.exports = (passport) => {
     const router = express.Router();
 
     // GET REQUESTS
-    router.get("/users", async (req, res) => {
+    router.get("/users", Util.isLoggedIn, async (req, res) => {
+        if (req.user.username !== "admin") {
+            req.session.error = "Invalid Request";
+            res.redirect("/");
+        }
         const users = await User.find();
         res.render('admin/users', {
             pageName: 'All Users',
             users: users,
-            isLoggedIn: req.isLogged
+            isLoggedIn: req.isLogged,
+            username: req.user.username
         });
     });
     router.get("/profile", (req, res) => {
@@ -48,41 +55,44 @@ module.exports = (passport) => {
         else { res.send("Menus Not Found"); }
     });
 
-    router.get("/menus", async (req, res) => {
+    router.get("/menus", Util.isLoggedIn, async (req, res) => {
         const menus = await Menu.find();
         res.send(menus);
     });
-    router.get("/foods", async (req, res) => {
+    router.get("/foods", Util.isLoggedIn, async (req, res) => {
         const foods = await Food.find();
         res.send(foods);
     });
 
     router.get("/", Util.isLoggedIn, async (req, res) => {
-        const index = { pageName: "index", isLoggedIn: req.isLogged }
+        const index = { pageName: "index", isLoggedIn: req.isLogged, error: req.session.error, username: req.user.username }
         res.render("index", index);
     });
     router.get("/about", Util.isLoggedIn, async (req, res) => {
-        const about = { pageName: "about", isLoggedIn: req.isLogged }
+        const about = { pageName: "about", isLoggedIn: req.isLogged, username: req.user.username }
         res.render("about", about);
     });
     router.get("/contact", Util.isLoggedIn, async (req, res) => {
-        const contact = { pageName: "contact", isLoggedIn: req.isLogged }
+        const contact = { pageName: "contact", isLoggedIn: req.isLogged, username: req.user.username }
         res.render("contact", contact);
     });
 
-    router.get("/signup", Util.isLoggedOut, (req, res) => {
+    router.get("/signup", Util.isLoggedOut, async (req, res) => {
+        const user = await User.findOne({ username: req.params.username});
         const signup = { 
             pageName: "signup", 
             isLoggedIn: req.isLogged, 
             error: req.query.error,
+            username: user.username
         }
         res.render("signup", signup);
     });
-    router.get("/login", Util.isLoggedOut, (req, res) => {
+    router.get("/login", Util.isLoggedOut, async (req, res) => {
         const login = {
             pageName: "login",
             isLoggedIn: req.isLogged,
             error: req.query.error,
+            username: ""
         }
         res.render("login", login );
     });
@@ -95,9 +105,7 @@ module.exports = (passport) => {
         res.redirect("/users/" + req.user.username + "/update");
     });
     router.get('/users/:username/update', Util.isLoggedIn, async (req, res) => {
-        const user = await User.findOne({ username: req.params.username});
         const data = { 
-            username: user.username,
             email: user.email,
             pageName: "update", 
             isLoggedIn: req.isLogged, 
@@ -123,6 +131,7 @@ module.exports = (passport) => {
                 username: "admin",
                 email: "kaiposemail@yahoo.com",
                 password: hash,
+                isAdmin: true
             });
             adminUser.save();
             res.redirect("/");
@@ -153,6 +162,7 @@ module.exports = (passport) => {
                     username: req.body.username,
                     email: req.body.email,
                     password: hash,
+                    isAdmin: false,
                 });
                 user.save();
                 res.redirect("/");
@@ -180,8 +190,6 @@ module.exports = (passport) => {
                 });
             });
         });
-
-
     });
 
     // PATCH REQUESTS

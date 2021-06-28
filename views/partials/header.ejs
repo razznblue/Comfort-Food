@@ -9,6 +9,12 @@
                 <% if (isLoggedIn) { %>
                     <li class="nav-item"><a <% if ( pageName === "myMenus" ) { %> class="active" <% } %> href="/myMenus">My Menus</a></li>
                 <% } %>
+                <% if (username) { %>
+                    <% console.log(username) %>
+                    <% if (username === "admin") { %>
+                        <li class="nav-item"><a <% if ( pageName === "All Users" ) { %> class="active" <% } %> href="/users">Users</a></li>
+                    <% } %>
+                <% } %>
             </ul>
             <ul class="nav-links links2">
                 <% console.log("Logged In: " + isLoggedIn); %>

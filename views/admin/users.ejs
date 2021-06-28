@@ -14,6 +14,9 @@
         <div class="container" id="users-container">
             <% for (let i = 0; i < users.length; i++) { %>
                 <div class="user-container">
+                    <% if (users[i].isAdmin) { %>
+                        <p class="is-admin">Admin</p>
+                    <% } %>
                     <h3 class="username">Username: <a href="users/<%= users[i].username %>"><%= users[i].username %></a></h3>
                     <p class="username">Email: <%= users[i].email %></p>
                     <p class="menus"><a href="#menus">Menus</a></p>

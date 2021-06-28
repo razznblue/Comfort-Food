@@ -14,9 +14,7 @@ const addPassport = require("./config/passport.js");
 const addLocalStrategy = require("./config/strategies/strategy.js");
 
 // REQUIRE OUR MODELS
-const User = require('./src/models/user.js');
-const Menu = require('./src/models/menu.js');
-const Food = require('./src/models/food.js');
+const User = require('./src/models/user');
 
 const app = express();
 

@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema (
             required: true,
         },
         menus: [{type: mongoose.Schema.Types.ObjectId, ref: 'Menu'}],
+        isAdmin: {
+            type: Boolean
+        }
     },
     { timestamps: true },
 );

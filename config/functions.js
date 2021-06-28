@@ -6,7 +6,7 @@ const functions = {
     isLoggedOut(req, res, next) {
         if (!req.isAuthenticated()) { req.isLogged = false; return next(); }
         res.redirect("/");
-    }
+    },
 }
 
 module.exports = functions;
