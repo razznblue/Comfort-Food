@@ -21,7 +21,7 @@
 
 # References and Help
 
-## Deployment Help
+## Deployment References
  - https://devcenter.heroku.com/articles/deploying-nodejs
  - https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app
  - https://devcenter.heroku.com/articles/troubleshooting-node-deploys
