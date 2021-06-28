@@ -127,7 +127,7 @@ nav, .nav-links {
 
 main {
   height: 90vh;
-  min-height: 30rem;
+  min-height: 10rem;
 }
 
 main, .main-container {
@@ -138,9 +138,9 @@ main, .main-container {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -150,7 +150,11 @@ main, .main-container {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  height: 30%;
+  height: 20%;
+}
+
+.main-container > * {
+  margin: 0.5rem;
 }
 
 .main-heading {
@@ -220,6 +224,7 @@ main, .main-container {
   opacity: 0;
   -webkit-transition: all 1.5s;
   transition: all 1.5s;
+  margin-top: 3.5rem;
 }
 
 .form h1 {

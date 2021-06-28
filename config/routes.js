@@ -11,7 +11,7 @@ const Util = require("./functions.js");
 module.exports = (passport) => {
     const router = express.Router();
 
-    // GET REQUESTS
+// <-- GET REQUESTS -->
     router.get("/users", Util.isLoggedIn, async (req, res) => {
         if (req.user.username !== "admin") {
             req.session.error = "Invalid Request";
@@ -35,9 +35,10 @@ module.exports = (passport) => {
             email: user.email,
             dateJoined: user.createdAt,
             pageName: 'myProfile',
-            isLoggedIn: req.isLogged
+            isLoggedIn: req.isLogged,
+            message: req.session.message
         }
-        if (user) { res.render("profile", data); }
+        if (user) { res.render("profile", data);  delete req.session.message; }
         else { res.send("User Not Found"); }
     });
     router.get("/myMenus", (req, res) => {
@@ -67,6 +68,7 @@ module.exports = (passport) => {
     router.get("/", Util.isLoggedIn, async (req, res) => {
         const index = { pageName: "index", isLoggedIn: req.isLogged, error: req.session.error, username: req.user.username }
         res.render("index", index);
+        delete req.session.error;
     });
     router.get("/about", Util.isLoggedIn, async (req, res) => {
         const about = { pageName: "about", isLoggedIn: req.isLogged, username: req.user.username }
@@ -78,12 +80,11 @@ module.exports = (passport) => {
     });
 
     router.get("/signup", Util.isLoggedOut, async (req, res) => {
-        const user = await User.findOne({ username: req.params.username});
         const signup = { 
             pageName: "signup", 
             isLoggedIn: req.isLogged, 
             error: req.query.error,
-            username: user.username
+            username: "",
         }
         res.render("signup", signup);
     });
@@ -105,7 +106,9 @@ module.exports = (passport) => {
         res.redirect("/users/" + req.user.username + "/update");
     });
     router.get('/users/:username/update', Util.isLoggedIn, async (req, res) => {
+        const user = await User.findOne({ username: req.params.username});
         const data = { 
+            username: user.username,
             email: user.email,
             pageName: "update", 
             isLoggedIn: req.isLogged, 
@@ -140,7 +143,7 @@ module.exports = (passport) => {
     });
 
 
-    // POST REQUESTS
+// <-- POST REQUESTS -->
     router.post("/login", passport.authenticate('local', { 
             successRedirect: "/", 
             failureRedirect: "/login?error=true"
@@ -185,8 +188,8 @@ module.exports = (passport) => {
                 user.password = hash;
                 User.update(query, user, (err) => {
                     if (err) return next(err);
+                    req.session.message = "Updated Successfully!";
                     res.redirect("/profile");
-                    console.log("Registered Successfully!");
                 });
             });
         });

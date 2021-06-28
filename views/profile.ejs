@@ -13,6 +13,9 @@
     <%- include('partials/header.ejs') %>
     <main>
         <div class="main-container">
+            <% if (message) { %>
+                <p style="color: red;"><%= message %></p>
+            <% } %>
             <h2>My Profile</h2>
             <div class="account-info">
                 <p class="username">Username: <%= username %></p>

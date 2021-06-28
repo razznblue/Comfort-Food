@@ -1,13 +1,16 @@
 main {
     height: 90vh;
-    min-height: 30rem;
+    min-height: 10rem;
 }
 main, .main-container {
-    @include flex(column, space-evenly, center);
+    @include flex(column, center, center);
 }
 .main-container {
     align-items: flex-start;
-    height: 30%;
+    height: 20%;
+}
+.main-container > * {
+    margin: 0.5rem;
 }
 .main-heading {
     @include text(3rem, $dark-text-color, normal);
