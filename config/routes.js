@@ -31,6 +31,7 @@ module.exports = (passport) => {
     router.get("/users/:username", Util.isLoggedIn, async (req, res) => {
         const user = await User.findOne({ username: req.params.username });
         const data = {
+            name: user.name,
             username: req.params.username,
             email: user.email,
             dateJoined: user.createdAt,
@@ -108,6 +109,7 @@ module.exports = (passport) => {
     router.get('/users/:username/update', Util.isLoggedIn, async (req, res) => {
         const user = await User.findOne({ username: req.params.username});
         const data = { 
+            name: user.name,
             username: user.username,
             email: user.email,
             pageName: "update", 
@@ -131,6 +133,7 @@ module.exports = (passport) => {
         bcrypt.hash("password", salt, (err, hash) => {
             if (err) return next(err);
             const adminUser = new User({
+                name: "Kaipo Wilmeth",
                 username: "admin",
                 email: "kaiposemail@yahoo.com",
                 password: hash,
@@ -162,6 +165,7 @@ module.exports = (passport) => {
             bcrypt.hash(req.body.password, salt, (err, hash) => {
                 if (err) return next(err);
                 const user = new User({
+                    name: req.body.name,
                     username: req.body.username,
                     email: req.body.email,
                     password: hash,
@@ -176,6 +180,7 @@ module.exports = (passport) => {
 
     router.post("/users/:username/update", async (req, res) => {
         let user = {}
+        user.name = req.body.name
         user.username = req.body.username;
         user.email = req.body.email;
 
