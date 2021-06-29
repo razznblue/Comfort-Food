@@ -37,6 +37,7 @@ li {
 }
 
 .header {
+  position: relative;
   height: 10vh;
   min-height: 3.8rem;
   background: #2c14a5;
@@ -123,6 +124,129 @@ nav, .nav-links {
   text-decoration: underline;
   font-size: 1.2rem;
   color: #ff81e6 !important;
+}
+
+.burger {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 0.4rem;
+  right: 2.2rem;
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  z-index: 50;
+  display: none;
+}
+
+.burger:hover {
+  width: 3.5rem;
+}
+
+.burger-line {
+  width: 80%;
+  min-height: 12%;
+  margin: 0.1rem;
+  background: #c7c7c7;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.change-color {
+  background: #595959;
+}
+
+.move-down {
+  margin-top: 0.3rem;
+}
+
+.line2 {
+  width: 60%;
+  margin-left: 1rem;
+}
+
+.line1-anim {
+  width: 85%;
+  -webkit-transform: rotateZ(50deg) translateY(200%);
+          transform: rotateZ(50deg) translateY(200%);
+}
+
+.line3-anim {
+  width: 85%;
+  -webkit-transform: rotateZ(-50deg) translateY(-280%);
+          transform: rotateZ(-50deg) translateY(-280%);
+}
+
+.burger-nav {
+  height: 100vh;
+  width: 100vw;
+  background: #6f62f7;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+  opacity: 0;
+}
+
+.burger-nav-links {
+  height: 70%;
+}
+
+.burger-nav-links > * {
+  font-size: 2rem;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.burger-nav-links > *:hover {
+  font-size: 2.1rem;
+  text-decoration: underline;
+}
+
+.burger-active {
+  font-size: 1.8rem;
+  color: #ff81e6;
+}
+
+@media screen and (max-width: 700px) {
+  .nav {
+    display: none;
+  }
+  .burger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+  .header {
+    min-width: 100vw;
+  }
 }
 
 main {
