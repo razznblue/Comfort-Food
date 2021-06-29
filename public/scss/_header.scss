@@ -93,7 +93,7 @@ nav, .nav-links {
 // Burger Navigation Menu
 .burger-nav {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     background: rgb(111, 98, 247);
     position: absolute;
     top: 0;
@@ -126,8 +126,5 @@ nav, .nav-links {
     }
     .burger {
         @include flex(column, space-evenly, flex-end);
-    }
-    .header {
-        min-width: 100vw;
     }
 }

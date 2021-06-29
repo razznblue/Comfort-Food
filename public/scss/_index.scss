@@ -1,6 +1,7 @@
 main {
     height: 90vh;
     min-height: 10rem;
+    padding: 0.5rem;
 }
 main, .main-container {
     @include flex(column, center, center);

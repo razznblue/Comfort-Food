@@ -20,6 +20,33 @@
     border: 2px solid black;
 }
 
+.account {
+    text-align: center;
+}
 #login-form {
     height: 45vh;
+}
+#signup-form {
+    height: 75vh;
+}
+
+@media screen and (max-width: 900px) {
+    .form {
+        min-width: 60%;
+        height: 80%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .form {
+        min-width: 70%;
+    }
+    #login-form {
+        height: 18%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .form {
+        min-width: 85%;
+    }
 }

@@ -10,7 +10,7 @@ if (burger) {
         if (!burgerToggled) {
             burgerToggled = true;
             burger.classList.add("move-down");
-            addClasses(lines);
+            toggleClasses(lines, "add");
             lines[1].classList.add("line1-anim");
             lines[3].style.opacity = "0"; 
             lines[3].style.display = "none"; 
@@ -19,7 +19,7 @@ if (burger) {
         } else {
             burgerToggled = false;
             burger.classList.remove("move-down");
-            removeClasses(lines);
+            toggleClasses(lines);
             lines[1].classList.remove("line1-anim");
             lines[5].classList.remove("line3-anim");      
             setTimeout(() => { lines[3].style.display = "block"; }, 300);
@@ -29,17 +29,10 @@ if (burger) {
     });
 }
 
-const addClasses = (lines) => {
+const toggleClasses = (lines, trigger) => {
     for (let i = 0; i < lines.length; i++) {
         if (i === 1 || i === 3 || i === 5) {
-            lines[i].classList.add("change-color");
-        }
-    }
-}
-const removeClasses = (lines) => {
-    for (let i = 0; i < lines.length; i++) {
-        if (i === 1 || i === 3 || i === 5) {
-            lines[i].classList.remove("change-color");
+            trigger === "add" ? lines[i].classList.add("change-color") : lines[i].classList.remove("change-color");
         }
     }
 }

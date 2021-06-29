@@ -180,7 +180,7 @@ nav, .nav-links {
 
 .burger-nav {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background: #6f62f7;
   position: absolute;
   top: 0;
@@ -244,14 +244,12 @@ nav, .nav-links {
         -ms-flex-align: end;
             align-items: flex-end;
   }
-  .header {
-    min-width: 100vw;
-  }
 }
 
 main {
   height: 90vh;
   min-height: 10rem;
+  padding: 0.5rem;
 }
 
 main, .main-container {
@@ -385,6 +383,12 @@ main, .main-container {
   background: #bbbbbb;
 }
 
+@media screen and (max-width: 400px) {
+  main {
+    padding-top: 3rem;
+  }
+}
+
 .form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -421,8 +425,38 @@ main, .main-container {
   border: 2px solid black;
 }
 
+.account {
+  text-align: center;
+}
+
 #login-form {
   height: 45vh;
+}
+
+#signup-form {
+  height: 75vh;
+}
+
+@media screen and (max-width: 900px) {
+  .form {
+    min-width: 60%;
+    height: 80%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .form {
+    min-width: 70%;
+  }
+  #login-form {
+    height: 18%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form {
+    min-width: 85%;
+  }
 }
 
 main {
