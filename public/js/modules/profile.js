@@ -4,7 +4,6 @@ const popUpUploadImgForm = document.querySelector(".upload-profile-img-form");
 const profileImgInput = document.querySelector("#profile-img-input");
 const profileImg = document.querySelector(".profile-img");
 
-console.log(profileImg.src);
 
 if (profileImg.src !== "picture1.jpg") {
     profileImg.style.height = "230%";
@@ -13,7 +12,6 @@ if (profileImg.src !== "picture1.jpg") {
 
 if (profileImgContainer) {
     profileImgContainer.addEventListener("click", () => {
-        console.log("clicked on profile pic");
         popUpUploadImgForm.style.display = "block";
         popUpUploadImgForm.style.opacity = "1";
         popUpUploadImgForm.style.zIndex = "1";

@@ -51,6 +51,7 @@ main {
     left: 15%;
     width: 10vw;
     height: 20vh;
+    border-radius: 10px;
     @include flex(column, space-evenly, flex-start);
     display: none;
 

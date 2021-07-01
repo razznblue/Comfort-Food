@@ -43,6 +43,7 @@ module.exports = (passport) => {
             profileImg: user.profileImgPath
         }
         if (req.user.username !== req.params.username) {
+            req.session.error = "Invalid Request";
             res.redirect("/profile");
         }
         if (user) { res.render("profile", data);  delete req.session.message; }
@@ -58,6 +59,10 @@ module.exports = (passport) => {
             menus: user.menus,
             pageName: 'myMenus',
             isLoggedIn: req.isLogged
+        }
+        if (req.user.username !== req.params.username) {
+            req.session.error = "Invalid Request";
+            res.redirect("/profile");
         }
         if (user) { res.render("menu", data); }
         else { res.send("Menus Not Found"); }
@@ -121,6 +126,10 @@ module.exports = (passport) => {
             pageName: "update", 
             isLoggedIn: req.isLogged, 
             error: req.query.error,
+        }
+        if (req.user.username !== req.params.username) {
+            req.session.error = "Invalid Request";
+            res.redirect("/profile");
         }
         if (user) { res.render("update", data); }
     })
