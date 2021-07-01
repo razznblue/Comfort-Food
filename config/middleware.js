@@ -2,7 +2,7 @@
 const session = require('express-session');
 const MemoryStore = require('memorystore')(session);
 const passport = require('passport');
-const router = require("./routes.js")(passport);
+const router = require("./routes/mainRouter.js")(passport);
 
 const Middleware = (app, express) => {
     // Middleware

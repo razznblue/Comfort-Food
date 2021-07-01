@@ -30,7 +30,8 @@ addPassport(passport, User);
 addLocalStrategy(passport, User);
 
 // // CONNECT TO EXPRESS SERVER, THEN TO MongoDB
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 5000, (err, res) => {
+    if (err) console.log(err);
     console.log("Server is listening on port 5000");
 
     mongoose.connect(process.env.URI, {
