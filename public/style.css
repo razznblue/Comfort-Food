@@ -685,12 +685,39 @@ main {
   cursor: pointer;
 }
 
+.actions,
+.profile-heading {
+  font-size: 7vw;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
 .profile-button {
+  width: 100%;
+  text-align: left;
   margin: 0.5rem 0;
 }
 
 .profile-button a {
   color: #e9e9e9;
+}
+
+.profile-button:hover {
+  width: 90%;
 }
 
 @media screen and (max-width: 700px) {

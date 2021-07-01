@@ -77,10 +77,24 @@ main {
     }
 }
 
+.actions,
+.profile-heading {
+    font-size: 7vw;
+}
+
+.buttons {
+    @include flex(column, space-evenly, flex-start);
+}
+
 .profile-button {
+    width: 100%;
+    text-align: left;
     margin: 0.5rem 0;
     a {
         color: $background-color;
+    }
+    &:hover {
+        width: 90%;
     }
 }
 
