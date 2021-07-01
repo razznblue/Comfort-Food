@@ -28,26 +28,35 @@
             </div>
         </div>
         <div class="mobile-view">
-            <div class="section">
+            <div class="section section1">
                 <div class="profile">
                     <div class="profile-img-container">
                         <img class="profile-img" src="/img/profile-pics/<%= profileImg %>" alt="profile-img">
                     </div>
                     <div class="profile-intro">
-                        <h1><%= name %></h1>
+                        <h1><%= name.split(" ")[0] %></h1>
                         <h2><%= username %></h2>
                     </div>
                 </div>
+            </div>
+            <div class="section section2">
+                <p> <b>Username:</b> <%= username %></p>
+                <p class="email"> <b>Email:</b> <%= email %></p>
+                <p class="date-joined"> <b>Member Since:</b> <%= dateJoined %></p>
+                <button class="button profile-button update"><a href="/update">Update My Info</a></button>
+                <button class="button profile-button my-menus"><a href="/myMenus">My Menus</a></button>
+                <button class="button profile-button"><a class="delete-user btn-danger" data-id="<%= username %>" href="#">Delete Account</a></button>
             </div>
 
             <div class="form upload-profile-img-form">
                 <h4>Upload New Profile Picture</h4>
                 <form id="profile-img-form" method="POST" action="/upload-profile-img" enctype="multipart/form-data">
-                    <input id="profile-img-input" type="file" name="profile-img" />
+                    <input id="profile-img-input" type="file" name="profile-img" required />
                     <input class="button" type="submit" />
                 </form> 
                 <img class="exit-btn" src="/img/exit-btn.png" alt="">
             </div> <!-- Pop-Up Form To Upload Profile Pic -->
+
         </div>
     </main>
     <%- include('partials/footer.ejs') %>

@@ -1,9 +1,21 @@
+main {
+    padding: 1rem;
+}
 .mobile-view {
     display: none;
 }
 
+.section2{
+    :nth-child(1) {
+        margin-top: 0.5rem;
+    }
+    > *:not(.button) {
+        padding: 0.4rem 0;
+    }
+}
+
 .profile {
-    min-width: 40vw;
+    min-width: 45vw;
     @include flex(row, space-evenly, center);
     > *{
         padding: 1rem;
@@ -64,6 +76,13 @@
     }
 }
 
+.profile-button {
+    margin: 0.5rem 0;
+    a {
+        color: $background-color;
+    }
+}
+
 @media screen and (max-width: 700px) {
     .mobile-view {
         display: block;
@@ -76,5 +95,18 @@
 @media screen and (max-width: 400px) {
     .upload-profile-img-form {
         left: 8%;
+    }
+    .section1 {
+        position: relative;
+        right: -2%;
+    }
+}
+
+@media screen and (max-width: 368px) {
+    .upload-profile-img-form {
+        left: 8%;
+    }
+    .section1 {
+        right: -5%;
     }
 }

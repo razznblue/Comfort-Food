@@ -562,12 +562,24 @@ main {
   color: red;
 }
 
+main {
+  padding: 1rem;
+}
+
 .mobile-view {
   display: none;
 }
 
+.section2 :nth-child(1) {
+  margin-top: 0.5rem;
+}
+
+.section2 > *:not(.button) {
+  padding: 0.4rem 0;
+}
+
 .profile {
-  min-width: 40vw;
+  min-width: 45vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -672,6 +684,14 @@ main {
   cursor: pointer;
 }
 
+.profile-button {
+  margin: 0.5rem 0;
+}
+
+.profile-button a {
+  color: #e9e9e9;
+}
+
 @media screen and (max-width: 700px) {
   .mobile-view {
     display: block;
@@ -684,6 +704,19 @@ main {
 @media screen and (max-width: 400px) {
   .upload-profile-img-form {
     left: 8%;
+  }
+  .section1 {
+    position: relative;
+    right: -2%;
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .upload-profile-img-form {
+    left: 8%;
+  }
+  .section1 {
+    right: -5%;
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -42,6 +42,9 @@ module.exports = (passport) => {
             message: req.session.message,
             profileImg: user.profileImgPath
         }
+        if (req.user.username !== req.params.username) {
+            res.redirect("/profile");
+        }
         if (user) { res.render("profile", data);  delete req.session.message; }
         else { res.send("User Not Found"); }
     });
@@ -206,8 +209,8 @@ module.exports = (passport) => {
     router.post("/upload-profile-img", upload.single('profile-img'), async (req, res) => {
         const user = await User.findOne({ username: req.user.username});
 
-        console.log(req.user);
-        console.log(req.file);
+        // console.log(req.user);
+        // console.log(req.file);
 
         user.profileImgPath = req.file.filename;
         let query = { username: req.user.username };
