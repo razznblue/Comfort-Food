@@ -7,6 +7,8 @@ const Food = require('../src/models/food');
 
 const Util = require("./functions.js");
 
+const upload = require('./upload.js');
+
 
 module.exports = (passport) => {
     const router = express.Router();
@@ -37,7 +39,8 @@ module.exports = (passport) => {
             dateJoined: user.createdAt,
             pageName: 'myProfile',
             isLoggedIn: req.isLogged,
-            message: req.session.message
+            message: req.session.message,
+            profileImg: user.profileImgPath
         }
         if (user) { res.render("profile", data);  delete req.session.message; }
         else { res.send("User Not Found"); }
@@ -179,7 +182,7 @@ module.exports = (passport) => {
     });
 
     router.post("/users/:username/update", async (req, res) => {
-        let user = {}
+        let user = {};
         user.name = req.body.name
         user.username = req.body.username;
         user.email = req.body.email;
@@ -197,6 +200,22 @@ module.exports = (passport) => {
                     res.redirect("/profile");
                 });
             });
+        });
+    });
+
+    router.post("/upload-profile-img", upload.single('profile-img'), async (req, res) => {
+        const user = await User.findOne({ username: req.user.username});
+
+        console.log(req.user);
+        console.log(req.file);
+
+        user.profileImgPath = req.file.filename;
+        let query = { username: req.user.username };
+
+        User.update(query, user, (err) => {
+            if (err) return next(err);
+            req.session.message = "Updated Successfully!";
+            res.redirect("/profile");
         });
     });
 

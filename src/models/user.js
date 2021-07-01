@@ -20,10 +20,9 @@ const userSchema = new mongoose.Schema (
             type: String,
             required: true,
         },
+        profileImgPath: { type: String, default: "picture1.png" },
         menus: [{type: mongoose.Schema.Types.ObjectId, ref: 'Menu'}],
-        isAdmin: {
-            type: Boolean
-        }
+        isAdmin: { type: Boolean }
     },
     { timestamps: true },
 );

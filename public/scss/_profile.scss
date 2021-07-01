@@ -1,0 +1,80 @@
+.mobile-view {
+    display: none;
+}
+
+.profile {
+    min-width: 40vw;
+    @include flex(row, space-evenly, center);
+    > *{
+        padding: 1rem;
+    }
+}
+.profile-img-container {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    background: white;
+    @include flex(row, center, center);
+    cursor: pointer;
+    position: relative;
+}
+.profile-img-container {
+    overflow: hidden;
+
+    .profile-img {
+        height: 70%;
+        width: auto;
+    }
+}
+#profile-img-form {
+    position: relative;
+}
+
+// POP UP UPLOAD IMG FORM
+.upload-profile-img-form {
+    transition: all 0.5s ease-in-out;
+    background: $background-color;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 10vw;
+    height: 20vh;
+    @include flex(column, space-evenly, flex-start);
+    display: none;
+
+    > * {
+        margin-top: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+    #profile-img-input {
+        border: none;
+    }
+    .submit {
+        cursor: pointer;
+        transition: all 0.5s ease;
+    }
+    .exit-btn {
+        width: 20px;
+        height: 20px;
+        top: -10%;
+        right: -3%;
+        position: absolute;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .mobile-view {
+        display: block;
+    }
+    .profile-main-container {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .upload-profile-img-form {
+        left: 8%;
+    }
+}

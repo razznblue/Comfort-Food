@@ -21,6 +21,7 @@
                     <h3 class="username">Username: <a href="users/<%= users[i].username %>"><%= users[i].username %></a></h3>
                     <p class="email">Email: <%= users[i].email %></p>
                     <p class="menus"><a href="#menus">Menus</a></p>
+                    <p class="img"><%= users[i].profileImgPath %></p>
                     <p>Date Joined: <%= users[i].createdAt %></p>
                     <p>Last Updated: <%= users[i].updatedAt %></p>
                     <p><a class="delete-user btn-danger" data-id="<%= users[i].username %>" href="#">Delete User</a></p>

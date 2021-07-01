@@ -12,7 +12,7 @@
 <body>
     <%- include('partials/header.ejs') %>
     <main>
-        <div class="main-container">
+        <div class="profile-main-container main-container">
             <% if (message) { %>
                 <p style="color: red;"><%= message %></p>
             <% } %>
@@ -27,9 +27,32 @@
                 <p><a class="delete-user btn-danger" data-id="<%= username %>" href="#">Delete Account</a></p>
             </div>
         </div>
+        <div class="mobile-view">
+            <div class="section">
+                <div class="profile">
+                    <div class="profile-img-container">
+                        <img class="profile-img" src="/img/profile-pics/<%= profileImg %>" alt="profile-img">
+                    </div>
+                    <div class="profile-intro">
+                        <h1><%= name %></h1>
+                        <h2><%= username %></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form upload-profile-img-form">
+                <h4>Upload New Profile Picture</h4>
+                <form id="profile-img-form" method="POST" action="/upload-profile-img" enctype="multipart/form-data">
+                    <input id="profile-img-input" type="file" name="profile-img" />
+                    <input class="button" type="submit" />
+                </form> 
+                <img class="exit-btn" src="/img/exit-btn.png" alt="">
+            </div> <!-- Pop-Up Form To Upload Profile Pic -->
+        </div>
     </main>
     <%- include('partials/footer.ejs') %>
 
     <script src="/js/modules/users.js"></script>
+    <script src="/js/modules/profile.js"></script>
 </body>
 </html>
