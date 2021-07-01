@@ -1,9 +1,9 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
+const path = require('path');
 
-const User = require('/Users/kaipojames/Documents/Development/Node/ComfortFood.js/src/models/user.js');
-const Menu = require('/Users/kaipojames/Documents/Development/Node/ComfortFood.js/src/models/menu.js');
-const Food = require('/Users/kaipojames/Documents/Development/Node/ComfortFood.js/src/models/food.js');
+const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');
+const Food = require(modelsPath + '/food.js');
 
 const Util = require("../functions.js");
 
