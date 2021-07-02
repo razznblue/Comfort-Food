@@ -1,7 +1,7 @@
 # Comfort Bank | Node.js Application
 
 # Deploys
- - View site on [Heroku](https://blooming-forest-34133.herokuapp.com/)
+ - View site on [Heroku](https://comfot-food.herokuapp.com/)
 
 # Dependencies
   - express v4.17.1
@@ -18,6 +18,9 @@
   - passport v0.4.1
   - passport-local v1.0.0
   - passport-local-mongoose v6.1.0
+  - bcrypt v5.0.1
+  - multer v1.4.2
+  - aws-sdk v2.938.0
 
 # References and Help
 
