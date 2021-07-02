@@ -1,7 +1,7 @@
 # Comfort Bank | Node.js Application
 
 # Deploys
- - View site on [Heroku](https://comfot-food.herokuapp.com/)
+ - View site on [Heroku](https://comfort-food.herokuapp.com/)
 
 # Dependencies
   - express v4.17.1
