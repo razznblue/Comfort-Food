@@ -90,9 +90,9 @@ main {
     width: 100%;
     text-align: left;
     margin: 0.5rem 0;
-    a {
-        color: $background-color;
-    }
+    padding: 0;
+    color: $background-color;
+    padding: 0.6rem 0.8rem;
     &:hover {
         width: 90%;
     }
