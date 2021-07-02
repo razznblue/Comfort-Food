@@ -6,6 +6,8 @@ const uploadToAWS = require("../aws/upload.js");
 const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');
 const User = require(modelsPath + '/user.js');
 
+const upload = require("../upload.js");
+
 const Util = require("../functions.js");
 
 // set up path to environmental variables
@@ -151,11 +153,11 @@ userRouter.post("/users/:username/update", async (req, res) => {
     });
 });
 
-userRouter.post("/upload-profile-img", async (req, res) => {
+userRouter.post("/upload-profile-img", upload.single('profile-img'),  async (req, res) => {
     const user = await User.findOne({ username: req.user.username});
 
     // console.log(req.user);
-    //console.log(req.file);
+    console.log(req.file);
 
     // Upload the actual file to AWS cloud storage
     const filePath = path.join(__dirname, '..', '..', 'public', 'img', 'profile-pics');
