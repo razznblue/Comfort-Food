@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/KaipoJames/Bank-System---Node.js#readme",
   "dependencies": {
+    "aws-sdk": "^2.938.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",

@@ -1,14 +1,19 @@
 const express = require("express");
 const bcrypt = require('bcrypt');
 const path = require('path');
+const uploadToAWS = require("../aws/upload.js");
 
 const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');
 const User = require(modelsPath + '/user.js');
 
-
 const Util = require("../functions.js");
 
-const upload = require('../upload.js');
+// set up path to environmental variables
+require('dotenv').config({ path: path.join(__dirname, '..', '..', '/.env') });
+// set our variables
+const BUCKET_NAME = process.env.BucketName;
+const REGION = process.env.Region;
+
 //const { Router } = require("express");
 
 const userRouter = express.Router();
@@ -32,6 +37,15 @@ userRouter.get("/profile", (req, res) => {
 });
 userRouter.get("/users/:username", Util.isLoggedIn, async (req, res) => {
     const user = await User.findOne({ username: req.params.username });
+        
+    const defaultprofilePic = "picture1.png";
+    let url = "";
+    if (user.profileImgPath === defaultprofilePic) {
+        url = "/img/picture1.png";
+    } else {
+        url = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${user.profileImgPath}`;
+    }
+
     const data = {
         name: user.name,
         username: req.params.username,
@@ -40,7 +54,7 @@ userRouter.get("/users/:username", Util.isLoggedIn, async (req, res) => {
         pageName: 'myProfile',
         isLoggedIn: req.isLogged,
         message: req.session.message,
-        profileImg: user.profileImgPath
+        profileImg: url
     }
     if (req.user.username !== req.params.username) {
         req.session.error = "Invalid Request";
@@ -48,6 +62,8 @@ userRouter.get("/users/:username", Util.isLoggedIn, async (req, res) => {
     }
     if (user) { res.render("profile", data);  delete req.session.message; }
     else { res.send("User Not Found"); }
+        
+    
 });
 userRouter.get("/myMenus", (req, res) => {
     res.redirect("/users/" + req.user.username + "/menus");
@@ -135,15 +151,21 @@ userRouter.post("/users/:username/update", async (req, res) => {
     });
 });
 
-userRouter.post("/upload-profile-img", upload.single('profile-img'), async (req, res) => {
+userRouter.post("/upload-profile-img", async (req, res) => {
     const user = await User.findOne({ username: req.user.username});
 
     // console.log(req.user);
-    // console.log(req.file);
+    //console.log(req.file);
 
+    // Upload the actual file to AWS cloud storage
+    const filePath = path.join(__dirname, '..', '..', 'public', 'img', 'profile-pics');
+    uploadToAWS(req.file.filename, filePath);
+
+    // Set new profileImg Src and define query
     user.profileImgPath = req.file.filename;
     let query = { username: req.user.username };
-
+    
+    // Update new user information in MongoDB Database
     User.update(query, user, (err) => {
         if (err) return next(err);
         req.session.message = "Updated Successfully!";
@@ -165,6 +187,13 @@ userRouter.delete("/users/:username/delete", (req, res) => {
         res.send("User Deleted Successfully.")
     });
 });
+
+function encode(data){
+    let buf = Buffer.from(data);
+    let base64 = buf.toString('base64');
+    return base64
+}
+
 
 
 module.exports = userRouter;
