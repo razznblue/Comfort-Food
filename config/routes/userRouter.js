@@ -16,6 +16,9 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '/.env') });
 const BUCKET_NAME = process.env.BucketName;
 const REGION = process.env.Region;
 
+console.log(BUCKET_NAME);
+console.log(REGION);
+
 //const { Router } = require("express");
 
 const userRouter = express.Router();
@@ -47,6 +50,8 @@ userRouter.get("/users/:username", Util.isLoggedIn, async (req, res) => {
     } else {
         url = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${user.profileImgPath}`;
     }
+
+    console.log(url);
 
     const data = {
         name: user.name,
