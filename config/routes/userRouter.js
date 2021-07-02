@@ -17,10 +17,6 @@ require('dotenv').config({ path: envPath });
 const BUCKET_NAME = process.env.BucketName;
 const REGION = process.env.Region;
 
-console.log(envPath)
-console.log(BUCKET_NAME);
-console.log(REGION);
-
 //const { Router } = require("express");
 
 const userRouter = express.Router();

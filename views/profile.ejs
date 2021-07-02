@@ -44,14 +44,14 @@
                 <p class="email"> <b class="profile-heading">Email:</b> <%= email %></p>
                 <p class="date-joined"> <b class="profile-heading">Member Since:</b> <%= dateJoined %></p>
                 <p class="actions"><b><u>Actions</u></b></p>
-                <div class="buttons">
+                <div class="profile-buttons">
                     <% if (username ==="admin") { %>
                         <button class="button profile-button"><a href="/users">Manage Users</a></button>
                     <% } %>
                     <button class="button profile-button my-menus"><a href="/myMenus">My Menus</a></button>
                     <button class="button profile-button my-menus"><a href="/mySecretMenus">Secret Menus</a></button>
                     <button class="button profile-button update"><a href="/update">Edit Account</a></button>
-                    <button class="button profile-button"><a class="delete-user btn-danger" data-id="<%= username %>" href="#">Delete Account</a></button>
+                    <button class="button profile-button btn-danger"><a class="delete-user" data-id="<%= username %>" href="#">Delete Account</a></button>
                 </div>
             </div>
 

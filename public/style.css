@@ -85,9 +85,13 @@ nav, .nav-links {
           align-items: center;
 }
 
-#logo {
+.logo {
   height: 5.5rem;
   width: auto;
+}
+
+.mobile-logo {
+  display: none;
 }
 
 .links1 {
@@ -118,7 +122,7 @@ nav, .nav-links {
   transition: all 0.4s;
 }
 
-.nav-links li:hover {
+.nav-links li:hover:not(.logo) {
   color: #eeeeee;
   font-size: 1.2rem;
 }
@@ -251,6 +255,13 @@ nav, .nav-links {
     -webkit-box-align: end;
         -ms-flex-align: end;
             align-items: flex-end;
+  }
+  .mobile-logo {
+    display: block;
+    position: absolute;
+    top: -21%;
+    left: 5%;
+    z-index: 50;
   }
 }
 
@@ -690,7 +701,7 @@ main {
   font-size: 7vw;
 }
 
-.buttons {
+.profile-buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

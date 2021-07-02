@@ -2,7 +2,7 @@
     <div class="header">
         <nav class="nav">
             <ul class="nav-links links1">
-                <li class="logo-container"><img id="logo" src="/img/comfort-food-logo.png" alt=""></li>
+                <li class="logo-container"><img class="logo" src="https://comfort-food-bucket.s3.eu-west-1.amazonaws.com/comfort-food-logo.png" alt=""></li>
                 <li><a id="home" <% if ( pageName === "index" ) { %> class="active" <% } %> href="/">Home</a></li>
                 <li><a <% if ( pageName === "about" ) { %> class="active" <% } %> href="/about">About</a></li>
                 <li><a <% if ( pageName === "contact" ) { %> class="active" <% } %> href="/contact">Contact</a></li>
@@ -27,6 +27,8 @@
                 <% } %>
             </ul>
         </nav>
+
+        <img class="mobile-logo logo" src="https://comfort-food-bucket.s3.eu-west-1.amazonaws.com/comfort-food-logo.png" alt="">
 
         <div class="burger">
             <div class="burger-line line1"></div>

@@ -3,7 +3,7 @@ const popUpUploadImgForm = document.querySelector(".upload-profile-img-form");
 
 const profileImgInput = document.querySelector("#profile-img-input");
 const profileImg = document.querySelector(".profile-img");
-
+const deleteBtn = document.querySelector(".btn-danger");
 
 if (profileImg.src !== "picture1.jpg") {
     profileImg.style.height = "230%";
@@ -32,5 +32,12 @@ if (profileImgInput) {
         profileImg.src = URL.createObjectURL(newProfileImg);
         profileImg.style.height = "230%";
         profileImg.style.marginTop = "1.5rem";
+    });
+}
+
+if (deleteBtn) {
+    deleteBtn.addEventListener("click", () => {
+        console.log("clicked on delete btn");
+        confirm("Danger. This action will delete your account and any associated data including pictures, menus, and foods currently in your account. Are you sure you want to delete your account?");
     });
 }

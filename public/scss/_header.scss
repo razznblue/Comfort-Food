@@ -12,9 +12,12 @@
 nav, .nav-links {
     @include flex(row, space-between, center);
 }
-#logo {
+.logo {
     height: 5.5rem;
     width: auto;
+}
+.mobile-logo {
+    display: none;
 }
 .links1 {
     width: 55%;
@@ -34,7 +37,7 @@ nav, .nav-links {
         padding: 0.5rem;
         cursor: pointer;
         transition: all 0.4s;
-        &:hover {
+        &:hover:not(.logo) {
             color: $text-hover-color;
             font-size: 1.2rem;
         } 
@@ -126,5 +129,12 @@ nav, .nav-links {
     }
     .burger {
         @include flex(column, space-evenly, flex-end);
+    }
+    .mobile-logo {
+        display: block;
+        position: absolute;
+        top: -21%;
+        left: 5%;
+        z-index: 50;
     }
 }
