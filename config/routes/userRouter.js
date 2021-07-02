@@ -11,11 +11,13 @@ const upload = require("../upload.js");
 const Util = require("../functions.js");
 
 // set up path to environmental variables
-require('dotenv').config({ path: path.join(__dirname, '..', '..', '/.env') });
+const envPath = path.join(__dirname, '..', '..', '/.env');
+require('dotenv').config({ path: envPath });
 // set our variables
 const BUCKET_NAME = process.env.BucketName;
 const REGION = process.env.Region;
 
+console.log(envPath)
 console.log(BUCKET_NAME);
 console.log(REGION);
 
