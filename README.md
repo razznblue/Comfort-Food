@@ -29,6 +29,11 @@
  - https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app
  - https://devcenter.heroku.com/articles/troubleshooting-node-deploys
 
-## Useful Heroku debugging commands
+## Useful debugging commands
  - heroku logs --tail -> get a report of previous deployments after pushing code to heroku
  - git push heroku master -> push all code and changes to the master branch.
+ - heroku config
+ - heroku config:set
+ - heroku ps:restart web -a (app-name) 
+ - heroku apps
+ - heroku apps:rename (new-name)
