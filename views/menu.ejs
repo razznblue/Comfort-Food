@@ -19,10 +19,11 @@
                 <a class="button button2">All Menus</a>
             </div>
             <div class="menus">
-                <div class="menus"><%= menus %></div>
+                <!-- <div class="menus"><%= menus %></div> -->
                 <% for (let i = 0; i < menus.length; i++) { %>
                     <div class="user-container">
                         <h3 class="name">Title: <%= menus[i].title %></a></h3>
+                        <h3 class="name">Nickname: <%= menus[i].nickname %></a></h3>
                         <p>Date Created: <%= menus[i].createdAt %></p>
                         <p>Last Updated: <%= menus[i].updatedAt %></p>
                         <p><a class="delete-user btn-danger" href="#">Delete Menu</a></p>

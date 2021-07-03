@@ -11,8 +11,18 @@ const Util = require("../functions.js");
 const menuRouter = express.Router();
 
 menuRouter.get("/menus", Util.isLoggedIn, async (req, res) => {
+    if (req.user.username !== "admin") {
+        req.session.error = "Invalid Request";
+        res.redirect("/");
+    }
     const menus = await Menu.find();
-    res.send(menus);
+
+    res.render('admin/menus', {
+        pageName: 'All Menus',
+        menus: menus,
+        isLoggedIn: req.isLogged,
+        username: req.user.username
+    });
 });
 
 menuRouter.get("/create-menu", (req, res) => {
@@ -36,11 +46,10 @@ menuRouter.post("/create-menu", async (req, res) => {
         return;
     }
     let user = req.user;
-    console.log(req.body.title);
-
 
     const menu = new Menu({
         title: req.body.title,
+        nickname: req.body.nickname,
         user: user,
     });
     menu.save((err, menu) => {

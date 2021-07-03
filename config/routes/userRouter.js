@@ -5,6 +5,7 @@ const uploadToAWS = require("../aws/upload.js");
 
 const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');
 const User = require(modelsPath + '/user.js');
+const Menu = require(modelsPath + '/menu.js');
 
 const upload = require("../upload.js");
 
@@ -75,10 +76,11 @@ userRouter.get("/myMenus", (req, res) => {
 });
 userRouter.get("/users/:username/menus", Util.isLoggedIn, async (req, res) => {
     const user = await User.findOne({ username: req.params.username});
-    
+    const menus = await Menu.find({ _id: { $in: user.menus} });
+
     const data = {
         username: req.params.username,
-        menus: user.menus,
+        menus: menus,
         pageName: 'myMenus',
         isLoggedIn: req.isLogged
     }

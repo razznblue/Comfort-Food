@@ -13,6 +13,7 @@
                     <% console.log(username) %>
                     <% if (username === "admin") { %>
                         <li class="nav-item"><a <% if ( pageName === "All Users" ) { %> class="active" <% } %> href="/users">Users</a></li>
+                        <li class="nav-item"><a <% if ( pageName === "All Menus" ) { %> class="active" <% } %> href="/menus">Menus</a></li>
                     <% } %>
                 <% } %>
             </ul>
@@ -48,6 +49,7 @@
                     <% console.log(username) %>
                     <% if (username === "admin") { %>
                         <li class="nav-item"><a <% if ( pageName === "All Users" ) { %> class="burger-active" <% } %> href="/users">Users</a></li>
+                        <li class="nav-item"><a <% if ( pageName === "All Menus" ) { %> class="burger-active" <% } %> href="/menus">Menus</a></li>
                     <% } %>
                 <% } %>
                 <% if (!isLoggedIn) { %>

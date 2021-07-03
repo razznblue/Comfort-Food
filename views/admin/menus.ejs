@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComfortFood | All Menus</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main>
+        <div class="container" id="users-container">
+            <% for (let i = 0; i < menus.length; i++) { %>
+                <div class="user-container">
+                    <h3 class="title">Title: <%= menus[i].title %></a></h3>
+                    <h3 class="username">Belongs To: User <%= menus[i].user %></a></h3>
+                    <p class="nickname">Nickname: <%= menus[i].nickname %></p>
+                    <p class="foods"><a href="#menus">Foods</a></p>
+                    <p>Created At: <%= menus[i].createdAt %></p>
+                    <p>Last Updated: <%= menus[i].updatedAt %></p>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <script src="/js/modules/menus.js"></script>
+</body>
+</html>
