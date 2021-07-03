@@ -24,10 +24,8 @@ const userRouter = express.Router();
 
 // <-- GET REQUESTS -->
 userRouter.get("/users", Util.isLoggedIn, async (req, res) => {
-    if (req.user.username !== "admin") {
-        req.session.error = "Invalid Request";
-        res.redirect("/");
-    }
+    Util.isAdminUser(req, res);
+
     const users = await User.find();
     res.render('admin/users', {
         pageName: 'All Users',
@@ -42,15 +40,7 @@ userRouter.get("/profile", (req, res) => {
 userRouter.get("/users/:username", Util.isLoggedIn, async (req, res) => {
     const user = await User.findOne({ username: req.params.username });
         
-    const defaultprofilePic = "picture1.png";
-    let url = "";
-    if (user.profileImgPath === defaultprofilePic) {
-        url = "/img/picture1.png";
-    } else {
-        url = `https://${BUCKET_NAME}.s3.${REGION}.amazonaws.com/${user.profileImgPath}`;
-    }
-
-    console.log(url);
+    const url = Util.getProfilePicUrl(user, BUCKET_NAME, REGION);
 
     const data = {
         name: user.name,
@@ -62,10 +52,9 @@ userRouter.get("/users/:username", Util.isLoggedIn, async (req, res) => {
         message: req.session.message,
         profileImg: url
     }
-    if (req.user.username !== req.params.username) {
-        req.session.error = "Invalid Request";
-        res.redirect("/profile");
-    }
+
+    Util.isLoggedInUser(req, res);
+
     if (user) { res.render("profile", data);  delete req.session.message; }
     else { res.send("User Not Found"); }
         
@@ -84,10 +73,9 @@ userRouter.get("/users/:username/menus", Util.isLoggedIn, async (req, res) => {
         pageName: 'myMenus',
         isLoggedIn: req.isLogged
     }
-    if (req.user.username !== req.params.username) {
-        req.session.error = "Invalid Request";
-        res.redirect("/profile");
-    }
+
+    Util.isLoggedInUser(req, res);
+
     if (user) { res.render("menu", data); }
     else { res.send("Menus Not Found"); }
 });
@@ -104,10 +92,8 @@ userRouter.get('/users/:username/update', Util.isLoggedIn, async (req, res) => {
         isLoggedIn: req.isLogged, 
         error: req.query.error,
     }
-    if (req.user.username !== req.params.username) {
-        req.session.error = "Invalid Request";
-        res.redirect("/profile");
-    }
+
+    Util.isLoggedInUser(req, res);
     if (user) { res.render("update", data); }
 });
 
@@ -195,13 +181,5 @@ userRouter.delete("/users/:username/delete", (req, res) => {
         res.send("User Deleted Successfully.")
     });
 });
-
-function encode(data){
-    let buf = Buffer.from(data);
-    let base64 = buf.toString('base64');
-    return base64
-}
-
-
 
 module.exports = userRouter;

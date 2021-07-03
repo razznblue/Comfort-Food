@@ -11,12 +11,9 @@ const Util = require("../functions.js");
 const menuRouter = express.Router();
 
 menuRouter.get("/menus", Util.isLoggedIn, async (req, res) => {
-    if (req.user.username !== "admin") {
-        req.session.error = "Invalid Request";
-        res.redirect("/");
-    }
+    Util.isAdminUser(req, res);
+    
     const menus = await Menu.find();
-
     res.render('admin/menus', {
         pageName: 'All Menus',
         menus: menus,
