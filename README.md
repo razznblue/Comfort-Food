@@ -1,6 +1,6 @@
 # Comfort Food | Full-Stack Web Application
 
-Comfort Food is a web application designed and developed from scrath using modern tools, frameworks, and technologies. 
+Comfort Food is a web application designed and developed from scratch using modern tools, frameworks, and technologies. 
 Listed here are some of the main technologies I used:
   FRONT-END: 
     - HTML
