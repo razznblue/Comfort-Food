@@ -40,7 +40,7 @@ app.listen(process.env.PORT || 5000, (err, res) => {
         useCreateIndex: true, 
         useFindAndModify: true,
     }).then(() => {
-        console.log("Connected to mongoDB Succesfully!"); 
+        console.log("Connected to mongoDB!"); 
     },
     err => { console.log(err) },
     );
