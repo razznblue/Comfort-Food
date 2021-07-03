@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png"/>
+    <title>Comfort Bank | Sign Up</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main>
+        <form class="form" id="create-menu-form" action="/create-menu" method="POST">
+            <% if (error) { %>
+                <p style="color: red;">Menu already exists.</p> 
+            <% } %>
+            <h1>New Menu</h1>
+            <input type="text" placeholder="Menu Title" name="title" required>
+            <input type="text" placeholder="Enter A Unique Nickname" name="nickname" required>
+            <label for="checkbox">Secret Menu?</label>
+            <input name="checkbox" type="checkbox">
+            <button type="submit" class="button" >Create</button>
+            <p class="error-msg" style="color: red;"></p>
+            <p class="form-error-msg" style="color: red;"></p>
+        </form>
+    </main>
+    <%- include('../partials/footer.ejs') %>
+
+    <script type="module" type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>

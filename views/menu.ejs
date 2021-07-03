@@ -15,11 +15,19 @@
             <h1 class="main-heading">My Menus</h1>
             <p class="main-sub-heading">Organize your different menus from this page!</p>
             <div class="buttons">
-                <button class="button button1">New Menu</button>
-                <button class="button button2">All Menus</button>
+                <a href="/create-menu" class="button button1">New Menu</a>
+                <a class="button button2">All Menus</a>
             </div>
             <div class="menus">
                 <div class="menus"><%= menus %></div>
+                <% for (let i = 0; i < menus.length; i++) { %>
+                    <div class="user-container">
+                        <h3 class="name">Title: <%= menus[i].title %></a></h3>
+                        <p>Date Created: <%= menus[i].createdAt %></p>
+                        <p>Last Updated: <%= menus[i].updatedAt %></p>
+                        <p><a class="delete-user btn-danger" href="#">Delete Menu</a></p>
+                    </div>
+                <% } %>
             </div>
         </div>
     </main>

@@ -75,6 +75,7 @@ userRouter.get("/myMenus", (req, res) => {
 });
 userRouter.get("/users/:username/menus", Util.isLoggedIn, async (req, res) => {
     const user = await User.findOne({ username: req.params.username});
+    
     const data = {
         username: req.params.username,
         menus: user.menus,

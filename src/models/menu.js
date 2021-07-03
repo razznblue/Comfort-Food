@@ -6,6 +6,11 @@ const menuSchema = new mongoose.Schema (
             type: String,
             required: true,
         },
+        nickname:{
+            type: String,
+            required: true,
+            unique: true
+        },
         foodList: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Food' }],
         user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     },
