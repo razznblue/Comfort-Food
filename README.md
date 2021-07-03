@@ -2,18 +2,20 @@
 
 Comfort Food is a web application designed and developed from scratch using modern tools, frameworks, and technologies. 
 Listed here are some of the main technologies I used:
+
   FRONT-END: 
-    - HTML
-    - CSS
-    - SCSS
-    - JavaScript
-    - EJS
+    1) HTML
+    2) CSS
+    3) SCSS
+    4) JavaScript
+    5) EJS
+    6) 
   BACK-END
-    - Node.js
-    - Express
-    - MongoDB
-    - Passport.js
-    - AWS S3 Cloud Storage
+    1) Node.js
+    2) Express
+    3) MongoDB
+    4) Passport.js
+    5) AWS S3 Cloud Storage
 Scroll down to see a full list of the dependencies used in this project.
 
 # Deploys
