@@ -13,11 +13,11 @@ const addMiddleware = require("./config/middleware.js");
 const addPassport = require("./config/passport.js");
 const addLocalStrategy = require("./config/strategies/strategy.js");
 
+
 // REQUIRE OUR MODELS
 const User = require('./src/models/user');
 
 const app = express();
-
 // Implement ejs template engine to render html file from views folder
 app.set("views", path.join(__dirname, "./views"));
 app.set("view engine", "ejs");
@@ -29,10 +29,10 @@ addMiddleware(app, express);
 addPassport(passport, User);
 addLocalStrategy(passport, User);
 
-// // CONNECT TO EXPRESS SERVER, THEN TO MongoDB
+// CONNECT TO EXPRESS SERVER, THEN TO MongoDB
 app.listen(process.env.PORT || 5000, (err, res) => {
     if (err) console.log(err);
-    console.log("Server is listening on port 5000");
+    console.log("Server is listening on port 5000 at: http://localhost:5000");
 
     mongoose.connect(process.env.URI, {
         useNewUrlParser: true, 
