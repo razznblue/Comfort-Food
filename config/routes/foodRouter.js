@@ -1,5 +1,4 @@
 const express = require("express");
-const bcrypt = require('bcrypt');
 const path = require('path');
 
 const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');

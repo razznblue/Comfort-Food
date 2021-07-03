@@ -1,5 +1,4 @@
 const express = require("express");
-const bcrypt = require('bcrypt');
 const path = require('path');
 
 const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');
@@ -12,7 +11,7 @@ const menuRouter = express.Router();
 
 menuRouter.get("/menus", Util.isLoggedIn, async (req, res) => {
     Util.isAdminUser(req, res);
-    
+
     const menus = await Menu.find();
     res.render('admin/menus', {
         pageName: 'All Menus',

@@ -6,7 +6,6 @@ const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');
 const User = require(modelsPath + '/user.js');
 
 const Util = require("../functions.js");
-const upload = require('../upload.js');
 
 const userRouter = require("./userRouter.js");
 const menuRouter = require("./menuRouter.js");
