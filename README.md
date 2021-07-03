@@ -9,13 +9,15 @@ Listed here are some of the main technologies I used:
     3) SCSS
     4) JavaScript
     5) EJS
-    6) 
+
+
   BACK-END
     1) Node.js
     2) Express
     3) MongoDB
     4) Passport.js
     5) AWS S3 Cloud Storage
+
 Scroll down to see a full list of the dependencies used in this project.
 
 # Deploys
