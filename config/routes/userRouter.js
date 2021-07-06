@@ -8,7 +8,6 @@ const User = require(modelsPath + '/user.js');
 const Menu = require(modelsPath + '/menu.js');
 
 const upload = require("../upload.js");
-
 const Util = require("../functions.js");
 
 // set up path to environmental variables

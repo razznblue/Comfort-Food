@@ -3,6 +3,7 @@ const path = require('path');
 
 const modelsPath = path.join(__dirname, '..', '..', 'src', 'models');
 const Menu = require(modelsPath + '/menu.js');
+const User = require(modelsPath + '/user.js');
 
 const Util = require("../functions.js");
 
@@ -13,11 +14,18 @@ menuRouter.get("/menus", Util.isLoggedIn, async (req, res) => {
     Util.isAdminUser(req, res);
 
     const menus = await Menu.find();
+    const names = [];
+    for (let i = 0; i < menus.length; i++) {
+        const user = await User.findOne({ _id: menus[i].user._id });
+        names.push(user.name);
+    }
+
     res.render('admin/menus', {
         pageName: 'All Menus',
         menus: menus,
         isLoggedIn: req.isLogged,
-        username: req.user.username
+        username: req.user.username,
+        names: names
     });
 });
 
@@ -48,11 +56,7 @@ menuRouter.post("/create-menu", async (req, res) => {
         nickname: req.body.nickname,
         user: user,
     });
-    menu.save((err, menu) => {
-        if (err) console.log(err);
-    });
-
-    console.log(menu);
+    menu.save((err, menu) => { if (err) console.log(err); });
 
     user.menus.push(menu);
     user.save((err, user) => {
