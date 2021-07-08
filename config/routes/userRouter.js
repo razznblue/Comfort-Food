@@ -75,7 +75,7 @@ userRouter.get("/users/:username/menus", Util.isLoggedIn, async (req, res) => {
 
     Util.isLoggedInUser(req, res);
 
-    if (user) { res.render("menu", data); }
+    if (user) { res.render("menus/userMenus", data); }
     else { res.send("Menus Not Found"); }
 });
 userRouter.get("/update", (req, res) => {

@@ -65,6 +65,23 @@ menuRouter.post("/create-menu", async (req, res) => {
     });
 });
 
+menuRouter.get('/users/:username/menus/:nickname', Util.isLoggedIn, async (req, res) => {
+    console.log(req.params.nickname);
+    const menu = await Menu.findOne({ nickname: req.params.nickname });
+    const user = req.user;
+
+    data = {
+        username: user.username,
+        isLoggedIn: req.isLogged,
+        menu: menu,
+        pageName: menu.title,
+    }
+    
+    res.render("menus/menu", data);
+    if (menus) { res.render("menus/menu", data);  }
+    else { res.send("Menu Not Found"); }
+});
+
 module.exports = menuRouter;
 
    

@@ -121,6 +121,8 @@ if (homeLink.classList.contains("active")) {
 
 if (document.URL.includes("signup") || document.URL.includes("login") || document.URL.includes("update")) {
   const form = document.querySelector(".form");
+  form.elements[0].focus();
+
   document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       form.style.opacity = "1";

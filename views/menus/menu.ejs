@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/img/favicon-16x16.png"/>
+    <title><%= username %> | Menu</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('../partials/header.ejs') %>
+    <main>
+        <div class="profile-main-container main-container">
+            <h2> <%= menu.title %> </h2>
+            <div class="account-info">
+                <p class="username">Belongs To: <%= username %></p>
+                <p class="nickname">Nickname: <%= menu.nickname %></p>
+                <p class="update"><a href="/update-menu">Update Menu</a></p>
+                <p class="my-menus"><a href="/users/<%= username %>/menus">All My Menus</a></p>
+                <p><a class="delete-user btn-danger" data-id="<%= username %>" href="#">Delete Menu</a></p>
+            </div>
+        </div>
+        
+    </main>
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+</html>
