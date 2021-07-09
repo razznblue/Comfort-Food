@@ -344,6 +344,10 @@ main, .main-container {
   font-size: 1.5rem;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .heading {
   position: absolute;
   text-align: center;
