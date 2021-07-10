@@ -11,12 +11,13 @@
 <body>
     <%- include('partials/header.ejs') %>
     <main>
-        <div class="main-container">
+        <div id="home-container" class="main-container">
             <% if (error) { %>
                 <p style="color: red;"><%= error %></p>
             <% } %>
             <h1 class="main-heading">Welcome <%= username %> To Comfort Food!</h1>
             <p class="main-sub-heading">Organize your favorite meals all in one place!</p>
+            <p class="main-sub-heading">Easily find the perfect meal for any occasion!</p>
             <div class="buttons">
                 <button class="button button1">Learn More</button>
                 <button class="button button2">Get Started</button>

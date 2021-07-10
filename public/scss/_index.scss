@@ -2,6 +2,8 @@ main {
     height: 90vh;
     min-height: 10rem;
     padding: 0.5rem;
+    background-image: url('/img/bg-img.jpg');
+    background-size: cover;
 }
 main, .main-container {
     @include flex(column, center, center);

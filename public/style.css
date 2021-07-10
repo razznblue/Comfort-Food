@@ -269,6 +269,8 @@ main {
   height: 90vh;
   min-height: 10rem;
   padding: 0.5rem;
+  background-image: url("/img/bg-img.jpg");
+  background-size: cover;
 }
 
 main, .main-container {
@@ -300,13 +302,13 @@ main, .main-container {
 
 .main-heading {
   font-size: 3rem;
-  color: #2e2e2e;
+  color: #1f1f1f;
   font-weight: normal;
 }
 
 .main-sub-heading {
   font-size: 1.5rem;
-  color: #2e2e2e;
+  color: #1f1f1f;
   font-weight: normal;
 }
 
@@ -357,7 +359,7 @@ body {
 }
 
 .cards {
-  margin-top: 15rem;
+  margin-top: 5rem;
   min-height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -374,13 +376,21 @@ body {
           align-items: center;
 }
 
+.card-shadow {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.card-shadow:hover {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
 .card {
   padding: 1rem 1rem 1rem 2rem;
-  height: 70%;
+  height: 75%;
   width: 30%;
   border-radius: 15px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -399,26 +409,48 @@ body {
   color: #753675;
 }
 
+.card:hover {
+  margin-bottom: 0.5rem;
+}
+
 .card p {
   color: black;
   width: 85%;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   text-align: start;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
-.card:hover {
-  margin-bottom: 0.5rem;
-  background: #bbbbbb;
+@media screen and (max-width: 900px) {
+  .card {
+    height: 90%;
+  }
 }
 
 @media screen and (max-width: 800px) {
   .cards {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    margin-bottom: 35rem;
   }
   .card {
     width: 18rem;
     margin: 1rem 0.5rem;
+  }
+  #main-about {
+    min-height: 170vh;
+    background-image: url("/img/cutting-board.jpg");
+    background-size: contain;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  #main-about {
+    min-height: 250vh;
+  }
+  .cards {
+    margin-bottom: 70rem;
   }
 }
 
@@ -509,7 +541,7 @@ body {
   }
 }
 
-main {
+#users-main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -557,8 +589,6 @@ main {
   width: 95%;
   min-height: 15vh;
   padding: 0 1rem;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
   opacity: 0.7;
@@ -789,7 +819,7 @@ main {
 
 .hero {
   width: 30vw;
-  height: 26.7%;
+  height: 100%;
   position: relative;
   bottom: 0;
   -webkit-transition: all 1s;
@@ -812,7 +842,7 @@ main {
 
 #menu-container {
   font-size: 2.4vw;
-  height: 26.7%;
+  height: 100%;
   width: 55%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -829,15 +859,8 @@ main {
           align-items: flex-start;
   padding: 0 1rem;
   border-radius: 10px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   -webkit-transition: all 1s;
   transition: all 1s;
-}
-
-#menu-container:hover {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 #menu-container .title .privacy {
@@ -865,19 +888,8 @@ main {
 }
 
 @media screen and (max-width: 950px) {
-  .hero,
-  #menu-container {
-    height: 24%;
-  }
   .buttons .button a {
     font-size: 1.2rem;
-  }
-}
-
-@media screen and (max-width: 750px) {
-  .hero,
-  #menu-container {
-    height: 20%;
   }
 }
 
@@ -909,15 +921,16 @@ main {
 @media screen and (max-width: 460px) {
   #menu-container {
     font-size: 4vw;
-    height: 40%;
   }
   #hero-child {
     position: relative;
-    height: 40%;
   }
 }
 
 @media screen and (max-width: 440px) {
+  #menu-main {
+    min-height: 130vh;
+  }
   #menu-container {
     font-size: 4.5vw;
   }

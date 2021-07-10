@@ -9,38 +9,66 @@ body {
     width: 100%;
 }
 .cards {
-    margin-top: 15rem;
+    margin-top: 5rem;
     min-height: 80vh;
     @include flex(row, space-evenly, center);
 }
+.card-shadow {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+}
 .card {
     padding: 1rem 1rem 1rem 2rem;
-    height: 70%;
+    height: 75%;
     width: 30%;
     border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     @include flex(column, space-evenly, start);
     transition: all 0.5s;
     color: rgb(117, 54, 117);
+    //background: rgb(233, 233, 233);
+    &:hover {
+        margin-bottom: 0.5rem;
+        //background: rgb(215, 215, 215);
+    }
+    p {
+        color: black;
+        width: 85%;
+        font-size: 1.15rem;
+        text-align: start;
+        font-weight: 500;
+        line-height: 1.4;
+    }
 }
-.card p {
-    color: black;
-    width: 85%;
-    font-size: 1.1rem;
-    text-align: start;
-}
-.card:hover {
-    margin-bottom: 0.5rem;
-    background: rgb(187, 187, 187);
+
+@media screen and (max-width: 900px) {
+    .card {
+        height: 90%;
+    }
 }
 
 @media screen and (max-width: 800px) {
     .cards{
         flex-wrap: wrap;
+        margin-bottom: 35rem;
     }
     .card {
         width: 18rem;
         margin: 1rem 0.5rem;
+    }
+    #main-about {
+        min-height: 170vh;
+        background-image: url('/img/cutting-board.jpg');
+        background-size: contain;
+    }
+}
+@media screen and (max-width: 670px) {
+    #main-about {
+        min-height: 250vh;
+    }
+    .cards {
+        margin-bottom: 70rem;
     }
 }
 @media screen and (max-width: 370px) {

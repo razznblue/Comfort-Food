@@ -13,7 +13,7 @@
 
 .hero {
     width: 30vw;
-    height: 26.7%;
+    height: 100%;
     position: relative;
     bottom: 0;
     transition: all 1s;
@@ -33,16 +33,13 @@
 
 #menu-container {
     font-size: 2.4vw;
-    height: 26.7%;
+    //height: 26.7%;
+    height: 100%;
     width: 55%;
     @include flex(column, space-evenly, flex-start);
     padding: 0 1rem;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     transition: all 1s;
-    &:hover {
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    }
 
 
     .title {
@@ -71,20 +68,20 @@
 }
 
 @media screen and (max-width: 950px) {
-    .hero, 
-    #menu-container {
-        height: 24%;
-    }
+    // .hero, 
+    // #menu-container {
+    //     //height: 24%;
+    // }
     .buttons .button a {
         font-size: 1.2rem;
     }
 }
-@media screen and (max-width: 750px) {
-    .hero, 
-    #menu-container {
-        height: 20%;
-    }
-}
+// @media screen and (max-width: 750px) {
+//     .hero, 
+//     #menu-container {
+//         //height: 20%;
+//     }
+// }
 @media screen and (max-width: 700px) {
     #menu-main {
         padding-top: 2.5rem;
@@ -116,14 +113,17 @@
 @media screen and (max-width: 460px) {
     #menu-container {
         font-size: 4vw;
-        height: 40%;
+        //height: 40%;
     }
     #hero-child {
         position: relative;
-        height: 40%;
+        //height: 40%;
     }
 }
 @media screen and (max-width: 440px) {
+    #menu-main {
+        min-height: 130vh;
+    }
     #menu-container {
         font-size: 4.5vw;
     }
