@@ -1,3 +1,138 @@
 #create-menu-form {
     opacity: 1;
 }
+
+#menu-main {
+    padding-top: 4rem;
+    @include flex(row, space-evenly, flex-start);
+}
+
+#hero-child {
+    display: none;
+}
+
+.hero {
+    width: 30vw;
+    height: 26.7%;
+    position: relative;
+    bottom: 0;
+    transition: all 1s;
+    //border: 1px solid black;
+    &:hover {
+        bottom: 1.6rem;
+    }
+    img {
+        cursor: pointer; // add option to change menu picture
+        display: block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+}
+
+#menu-container {
+    font-size: 2.4vw;
+    height: 26.7%;
+    width: 55%;
+    @include flex(column, space-evenly, flex-start);
+    padding: 0 1rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    transition: all 1s;
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+
+
+    .title {
+        .privacy {
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+    }
+    .account-info {
+        .buttons {
+            margin-top: 2.5rem;
+            .button a {
+                color: $text-color;
+                font-size: 2vw;
+                width: 30%;
+            }
+        }
+        p {
+            margin: 0;
+            margin: 0.5rem 0;
+            span {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .hero, 
+    #menu-container {
+        height: 24%;
+    }
+    .buttons .button a {
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width: 750px) {
+    .hero, 
+    #menu-container {
+        height: 20%;
+    }
+}
+@media screen and (max-width: 700px) {
+    #menu-main {
+        padding-top: 2.5rem;
+    }
+    #menu-container {
+        width: 85%;
+        position: relative;
+        padding-right: 0;
+        .account-info {
+            .buttons {
+                .button a {
+                    font-size: 2.8vw;
+                }
+            }
+        }
+    }
+    .hero:not(#hero-child) {
+        display: none;
+    }
+    #hero-child {
+        display: block;
+        height: 96%;
+        width: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+@media screen and (max-width: 460px) {
+    #menu-container {
+        font-size: 4vw;
+        height: 40%;
+    }
+    #hero-child {
+        position: relative;
+        height: 40%;
+    }
+}
+@media screen and (max-width: 440px) {
+    #menu-container {
+        font-size: 4.5vw;
+    }
+    #hero-child {
+        width: 70%;
+    }
+}
+@media screen and (max-width: 380px) {
+    #hero-child {
+        width: 87%;
+    }
+}
