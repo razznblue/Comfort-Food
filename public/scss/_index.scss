@@ -39,3 +39,10 @@ main, .main-container {
         font-size: 1.5rem;
     }
 }
+
+@media screen and (max-width: 700px) {
+    main {
+        background-image: url('/img/cutting-board.jpg');
+        background-size: contain;
+    }
+}

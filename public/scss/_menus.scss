@@ -88,6 +88,7 @@
     }
     #menu-container {
         width: 85%;
+        height: 85%;
         position: relative;
         padding-right: 0;
         .account-info {
@@ -111,14 +112,21 @@
     }
 }
 @media screen and (max-width: 460px) {
+    #menu-main {
+        padding-top: 2.5rem;
+        min-height: 130vh;
+    }
     #menu-container {
         font-size: 4vw;
-        //height: 40%;
+        height: 100%;
     }
     #hero-child {
         position: relative;
-        //height: 40%;
+        height: 40%;
     }
+    // .hero {
+    //     height: 90%;
+    // }
 }
 @media screen and (max-width: 440px) {
     #menu-main {

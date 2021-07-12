@@ -346,6 +346,13 @@ main, .main-container {
   font-size: 1.5rem;
 }
 
+@media screen and (max-width: 700px) {
+  main {
+    background-image: url("/img/cutting-board.jpg");
+    background-size: contain;
+  }
+}
+
 body {
   overflow-x: hidden;
 }
@@ -899,6 +906,7 @@ main {
   }
   #menu-container {
     width: 85%;
+    height: 85%;
     position: relative;
     padding-right: 0;
   }
@@ -919,11 +927,17 @@ main {
 }
 
 @media screen and (max-width: 460px) {
+  #menu-main {
+    padding-top: 2.5rem;
+    min-height: 130vh;
+  }
   #menu-container {
     font-size: 4vw;
+    height: 100%;
   }
   #hero-child {
     position: relative;
+    height: 40%;
   }
 }
 
