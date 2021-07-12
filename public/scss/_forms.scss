@@ -35,13 +35,13 @@
         min-width: 60%;
         height: 80%;
     }
+    #login-form {
+        height: 50vh;
+    }
 }
 @media screen and (max-width: 700px) {
     .form {
         min-width: 70%;
-    }
-    #login-form {
-        height: 18%;
     }
 }
 
