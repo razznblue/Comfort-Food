@@ -82,6 +82,16 @@ menuRouter.get('/users/:username/menus/:nickname', Util.isLoggedIn, async (req, 
     else { res.send("Menu Not Found"); }
 });
 
+// DELETE REQUESTS
+menuRouter.delete("/users/:username/:nickname/delete", (req, res) => {
+    console.log("ROUTER.DELETE: deleting menu...");
+    let query = {nickname:req.params.nickname};
+    Menu.remove(query, (err) => {
+        if (err) console.log(err);
+        res.send("Menu Deleted Successfully.")
+    });
+});
+
 module.exports = menuRouter;
 
    

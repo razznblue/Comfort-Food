@@ -364,6 +364,7 @@ body {
 .heading {
   position: absolute;
   text-align: center;
+  padding-top: 1rem;
   top: 12%;
   right: -3%;
   width: 100%;
@@ -643,9 +644,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

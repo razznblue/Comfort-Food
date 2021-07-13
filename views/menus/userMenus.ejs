@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="/img/favicon-16x16.png"/>
     <title>Comfort Food - <%= username %> (Menus)</title>
     <link rel="stylesheet" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <%- include('../partials/header.ejs') %>
@@ -26,7 +27,7 @@
                         <h3 class="name">Nickname: <%= menus[i].nickname %></h3>
                         <p>Date Created: <%= menus[i].createdAt %></p>
                         <p>Last Updated: <%= menus[i].updatedAt %></p>
-                        <p><a class="delete-user btn-danger" href="#">Delete Menu</a></p>
+                        <p><a class="delete-menu btn-danger" data-id="<%= menus[i].nickname %>" href="#">Delete Menu</a></p>
                     </div>
                 <% } %>
             </div>
@@ -35,5 +36,6 @@
     <%- include('../partials/footer.ejs') %>
 
     <script type="module" type="text/javascript" src="/js/main.js"></script>
+    <script type="module" type="text/javascript" src="/js/modules/menus.js"></script>
 </body>
 </html>

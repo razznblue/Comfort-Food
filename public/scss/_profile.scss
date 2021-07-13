@@ -16,7 +16,7 @@ main {
 
 .profile {
     min-width: 45vw;
-    @include flex(row, space-evenly, center);
+    @include flex(row, flex-start, center);
     > *{
         padding: 1rem;
     }
