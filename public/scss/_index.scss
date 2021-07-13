@@ -12,6 +12,9 @@ main, .main-container {
     align-items: flex-start;
     height: 20%;
 }
+#home-container {
+    margin-bottom: 6rem;
+}
 .main-container > * {
     margin: 0.5rem;
 }
