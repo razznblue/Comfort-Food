@@ -41,7 +41,6 @@
     border-radius: 10px;
     transition: all 1s;
 
-
     .title {
         .privacy {
             font-style: italic;
@@ -68,20 +67,10 @@
 }
 
 @media screen and (max-width: 950px) {
-    // .hero, 
-    // #menu-container {
-    //     //height: 24%;
-    // }
     .buttons .button a {
         font-size: 1.2rem;
     }
 }
-// @media screen and (max-width: 750px) {
-//     .hero, 
-//     #menu-container {
-//         //height: 20%;
-//     }
-// }
 @media screen and (max-width: 700px) {
     #menu-main {
         padding-top: 2.5rem;
@@ -118,11 +107,14 @@
     }
     #menu-container {
         font-size: 4vw;
-        height: 100%;
+        height: 85%;
     }
     #hero-child {
         position: relative;
         height: 40%;
+    }
+    #menu-container .account-info .buttons .button a {
+        font-size: 1rem;
     }
 }
 @media screen and (max-width: 440px) {
@@ -130,13 +122,16 @@
         min-height: 130vh;
     }
     #menu-container {
-        font-size: 4.5vw;
+        font-size: 4.9vw;
     }
     #hero-child {
         width: 70%;
     }
 }
 @media screen and (max-width: 380px) {
+    #menu-container {
+        font-size: 5.2vw;
+    }
     #hero-child {
         width: 87%;
     }

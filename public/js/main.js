@@ -56,6 +56,7 @@ const pass2 = document.querySelector(".confirm-password");
 const errorMsg = document.querySelector(".error-msg");
 const formErrorMsg = document.querySelector(".form-error-msg");
 const signupButton = document.querySelector("#signup-button");
+const backBtn = document.querySelector(".back-btn");
 
 const valuesAreEmpty = (pass1, pass2) => {
   pass1.value.length > 0 || pass2.value.length > 0 ? false : true;
@@ -103,7 +104,6 @@ if (document.URL.includes("signup")) {
 
 const homeLink = document.querySelector("#home");
 if (homeLink.classList.contains("active")) {
-  //console.log("You are on the home page!");
   const btn1 = document.querySelector(".button1");
   if (btn1) {
     btn1.addEventListener("click", () => {
@@ -143,3 +143,8 @@ if (document.URL.includes("signup") || document.URL.includes("login") || documen
   });
 }
 
+if (backBtn) {
+  backBtn.addEventListener("click", () => {
+    location.href = "/profile";
+  });
+}

@@ -11,6 +11,7 @@ main {
 
 a {
   text-decoration: none;
+  color: #1f1f1f;
 }
 
 li {
@@ -42,6 +43,14 @@ li {
 
 .hide {
   display: none;
+}
+
+.back-btn {
+  color: #6c196e;
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .header {
@@ -389,6 +398,8 @@ body {
 }
 
 .card-shadow {
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
   -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
@@ -504,7 +515,7 @@ body {
   opacity: 0;
   -webkit-transition: all 1.5s;
   transition: all 1.5s;
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
 }
 
 .form h1 {
@@ -938,11 +949,14 @@ main {
   }
   #menu-container {
     font-size: 4vw;
-    height: 100%;
+    height: 85%;
   }
   #hero-child {
     position: relative;
     height: 40%;
+  }
+  #menu-container .account-info .buttons .button a {
+    font-size: 1rem;
   }
 }
 
@@ -951,7 +965,7 @@ main {
     min-height: 130vh;
   }
   #menu-container {
-    font-size: 4.5vw;
+    font-size: 4.9vw;
   }
   #hero-child {
     width: 70%;
@@ -959,6 +973,9 @@ main {
 }
 
 @media screen and (max-width: 380px) {
+  #menu-container {
+    font-size: 5.2vw;
+  }
   #hero-child {
     width: 87%;
   }

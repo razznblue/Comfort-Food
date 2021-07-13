@@ -77,7 +77,7 @@ menuRouter.get('/users/:username/menus/:nickname', Util.isLoggedIn, async (req, 
         pageName: menu.title,
     }
     
-    res.render("menus/menu", data);
+    //res.render("menus/menu", data);
     if (menu) { res.render("menus/menu", data);  }
     else { res.send("Menu Not Found"); }
 });

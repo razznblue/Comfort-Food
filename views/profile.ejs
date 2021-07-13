@@ -21,7 +21,7 @@
                 <p class="username">Name: <%= name %></p>
                 <p class="username">Username: <%= username %></p>
                 <p class="email">Email: <%= email %></p>
-                <p class="date-joined">Date Joined: <%= dateJoined %></p>
+                <p class="date-joined">Date Joined: <%= dateJoined.toLocaleString('en-US'); %></p>
                 <p class="update"><a href="/update">Update My Info</a></p>
                 <p class="my-menus"><a href="/myMenus">My Menus</a></p>
                 <p><a class="delete-user btn-danger" data-id="<%= username %>" href="#">Delete Account</a></p>
@@ -42,7 +42,7 @@
             <div class="section section2">
                 <p> <b class="profile-heading">Username:</b> <%= username %></p>
                 <p class="email"> <b class="profile-heading">Email:</b> <%= email %></p>
-                <p class="date-joined"> <b class="profile-heading">Member Since:</b> <%= dateJoined %></p>
+                <p class="date-joined"> <b class="profile-heading">Member Since:</b> <%= dateJoined.toLocaleString('en-US'); %></p>
                 <p class="actions"><b><u>Actions</u></b></p>
                 <div class="profile-buttons">
                     <% if (username ==="admin") { %>
@@ -51,13 +51,8 @@
                     <% } %>
                     <a class="button profile-button my-menus" href="/myMenus">My Menus</a>
                     <a class="button profile-button secret-menus" href="/mySecretMenus">Secret Menus</a>
-                    <a class="button profile-button update" href="/myMenus">Edit Account</a>
-                    <a class="button profile-button btn-danger" data-id="<%= username %>" href="/myMenus">Delete Account</a>
-
-                    <!-- <button class="button profile-button my-menus"><a href="/myMenus">My Menus</a></button>
-                    <button class="button profile-button secret-menus"><a href="/mySecretMenus">Secret Menus</a></button>
-                    <button class="button profile-button update"><a href="/update">Edit Account</a></button>
-                    <button class="button profile-button btn-danger"><a class="delete-user" data-id="<%= username %>" href="#">Delete Account</a></button> -->
+                    <a class="button profile-button update" href="/update">Edit Account</a>
+                    <a class="button profile-button btn-danger" data-id="<%= username %>" href="#">Delete Account</a>
                 </div>
             </div>
 
