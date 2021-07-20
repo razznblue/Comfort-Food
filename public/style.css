@@ -11,7 +11,9 @@ main {
 
 a {
   text-decoration: none;
-  color: #1f1f1f;
+  color: #5f2364;
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
 li {
@@ -834,6 +836,8 @@ main {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  background-image: url("../img/cutting-board.jpg");
+  min-height: 200vh;
 }
 
 #hero-child {
@@ -842,7 +846,7 @@ main {
 
 .hero {
   width: 30vw;
-  height: 100%;
+  height: 45%;
   position: relative;
   bottom: 0;
   -webkit-transition: all 1s;
@@ -865,7 +869,7 @@ main {
 
 #menu-container {
   font-size: 2.4vw;
-  height: 100%;
+  height: 45%;
   width: 55%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -911,6 +915,10 @@ main {
 }
 
 @media screen and (max-width: 950px) {
+  #menu-container,
+  .hero {
+    height: 40%;
+  }
   .buttons .button a {
     font-size: 1.2rem;
   }
@@ -922,7 +930,7 @@ main {
   }
   #menu-container {
     width: 85%;
-    height: 85%;
+    height: 40%;
     position: relative;
     padding-right: 0;
   }
@@ -934,7 +942,7 @@ main {
   }
   #hero-child {
     display: block;
-    height: 96%;
+    height: 97%;
     width: 50%;
     position: absolute;
     top: 0;
@@ -962,9 +970,10 @@ main {
 
 @media screen and (max-width: 440px) {
   #menu-main {
-    min-height: 130vh;
+    min-height: 350vh;
   }
   #menu-container {
+    height: 35%;
     font-size: 4.9vw;
   }
   #hero-child {

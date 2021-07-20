@@ -4,6 +4,8 @@ $theme-color: rgb(44, 20, 165);
 $button-hover-color: rgb(68, 42, 199);
 $dark-text-color: #1f1f1f;
 $text-color: #cecece;
+$link-color: #5f2364;
+$visited-link-color: #875b8b;
 //$text-color: #1f1f1f;
 $text-hover-color: #eeeeee;
 $background-color: rgb(233, 233, 233);
@@ -39,7 +41,8 @@ main {
 }
 a {
     text-decoration: none;
-    color: $dark-text-color;
+    color: $link-color;
+    transition: all 1s;
 }
 li {
     list-style: none;
