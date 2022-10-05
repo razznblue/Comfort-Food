@@ -7,16 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --experimental-modules app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KaipoJames/Bank-System---Node.js.git"
-  },
-  "author": "Kaipo Wilmeth <kaipojames12@gmail.com>",
+  "author": "RazzNBlue",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KaipoJames/Bank-System---Node.js/issues"
-  },
-  "homepage": "https://github.com/KaipoJames/Bank-System---Node.js#readme",
   "dependencies": {
     "aws-sdk": "^2.938.0",
     "bcrypt": "^5.0.1",
