@@ -75,9 +75,9 @@ module.exports = (passport) => {
         bcrypt.hash("password", salt, (err, hash) => {
             if (err) return next(err);
             const adminUser = new User({
-                name: "Kaipo Wilmeth",
+                name: "admin admin",
                 username: "admin",
-                email: "kaiposemail@yahoo.com",
+                email: "admin@yahoo.com",
                 password: hash,
                 isAdmin: true
             });
